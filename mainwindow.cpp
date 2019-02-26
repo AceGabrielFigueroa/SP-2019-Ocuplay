@@ -42,88 +42,46 @@ void MainWindow::createBitMap() {
         _DATA[1] = 0x4D;
 
         // File Size
-        _DATA[2] = 0x46;
-        _DATA[3] = 0;
-        _DATA[4] = 0;
-        _DATA[5] = 0;
+        UINT_32_LITTLE_ENDIAN(_DATA, 2, 0x46);
 
         // Data reserved
-        _DATA[6] = 0;
-        _DATA[7] = 0;
-        _DATA[8] = 0;
-        _DATA[9] = 0;
+        UINT_32_LITTLE_ENDIAN(_DATA, 6, 0);
 
         // Offset
-        _DATA[10] = 0x36;
-        _DATA[11] = 0;
-        _DATA[12] = 0;
-        _DATA[13] = 0;
+        UINT_32_LITTLE_ENDIAN(_DATA, 10, 0x36);
 
         // Size of header
-        _DATA[14] = 0x28;
-        _DATA[15] = 0;
-        _DATA[16] = 0;
-        _DATA[17] = 0;
+        UINT_32_LITTLE_ENDIAN(_DATA, 14, 0x28);
 
         // Bitmap width in pixels
-        /*
-        _DATA[18] = 0x02;
-        _DATA[19] = 0;
-        _DATA[20] = 0;
-        _DATA[21] = 0;
-        */
         UINT_32_LITTLE_ENDIAN(_DATA, 18, 0x02);
 
         // Bitmap height in pixels
         UINT_32_LITTLE_ENDIAN(_DATA, 22, 0x02);
 
         // Color plane
-        /*
-        _DATA[26] = 0x01;
-        _DATA[27] = 0;
-        */
         UINT_16_LITTLE_ENDIAN(_DATA, 26, 0x05);
 
         // Number of bits per pixel
-        //_DATA[28] = 0x18;
-        //_DATA[29] = 0;
         UINT_16_LITTLE_ENDIAN(_DATA, 28, 0x18);
 
         // Compression method
-        _DATA[30] = 0;
-        _DATA[31] = 0;
-        _DATA[32] = 0;
-        _DATA[33] = 0;
+        UINT_32_LITTLE_ENDIAN(_DATA, 30, 0x00);
 
         // Image size
-        _DATA[34] = 0x10;
-        _DATA[35] = 0;
-        _DATA[36] = 0;
-        _DATA[37] = 0;
+        UINT_32_LITTLE_ENDIAN(_DATA, 34, 0x10);
 
         // Horizontal Resolution
-        _DATA[38] = 0x13;
-        _DATA[39] = 0x0b;
-        _DATA[40] = 0;
-        _DATA[41] = 0;
+        UINT_32_LITTLE_ENDIAN(_DATA, 38, 2835);
 
         // Vertical Resolution
-        _DATA[42] = 0x13;
-        _DATA[43] = 0x0b;
-        _DATA[44] = 0;
-        _DATA[45] = 0;
+        UINT_32_LITTLE_ENDIAN(_DATA, 42, 2835);
 
         // Number of colors in palettes
-        _DATA[46] = 0;
-        _DATA[47] = 0;
-        _DATA[48] = 0;
-        _DATA[49] = 0;
+        UINT_32_LITTLE_ENDIAN(_DATA, 46, 0x00);
 
         // Number of important colors
-        _DATA[50] = 0;
-        _DATA[51] = 0;
-        _DATA[52] = 0;
-        _DATA[53] = 0;
+        UINT_32_LITTLE_ENDIAN(_DATA, 50, 0x00);
 
         // Color Table
         _DATA[54] = 0;

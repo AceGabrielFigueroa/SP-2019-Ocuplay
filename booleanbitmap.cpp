@@ -5,6 +5,9 @@
 // Default constructor
 BooleanBitMap::BooleanBitMap()
 {
+    this->m_board = nullptr;
+    m_widthPixels = 0;
+    m_heightPixels = 0;
 }
 
 // Destructor
@@ -43,9 +46,19 @@ BooleanBitMap::BooleanBitMap(BooleanBitMap* chb1, BooleanBitMap* chb2, bool exOR
 // This function is primarily used to set the dimensions of the bitmap object, primarily the width and height protected properties and uses those to construct a width * height board
 void BooleanBitMap::construct(int width, int height)
 {
+    // Delete if theres an existing m_boards
+    if(m_board)
+        delete[] m_board;
+
     m_widthPixels = width; //
     m_heightPixels = height; //
-    m_board = new  bool[m_widthPixels * m_heightPixels]; //
+
+    m_board = new bool[m_widthPixels * m_heightPixels]; //
+
+    // DEBUG FOR TESTING CAPACITY
+    for(int i = 0; i < height ; i++)
+        for(int j = 0; j < width; j++)
+            this->setAt(i, j, rand() % 2);
 }
 
 // getter function for Boolean bitmap
