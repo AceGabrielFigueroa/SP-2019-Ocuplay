@@ -17,8 +17,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    qDebug() << "I am in the Checkerboard button";
+    // TODO: error check to see if line_box is an actually interger
+    //
+    CheckerBoard checker1 = CheckerBoard(ui->image_w->text().toInt(), ui->image_h->text().toInt(),
+                                         ui->lr1c1->text().toInt(), ui->lr1c2->text().toInt(), true);
 
-    CheckerBoard checker(10, 10, 5, 5, true);
-    checker.Show();
+    CheckerBoard checker2 = CheckerBoard(ui->image_w->text().toInt(), ui->image_h->text().toInt(),
+                                         ui->lr2c1->text().toInt(), ui->lr2c2->text().toInt());
+
+    checker1.Show();
 }

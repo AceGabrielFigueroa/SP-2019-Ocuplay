@@ -20,6 +20,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    //void createLayer(
 };
 
 #endif // MAINWINDOW_H
