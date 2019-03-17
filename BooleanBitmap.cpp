@@ -25,8 +25,8 @@ void BooleanBitmap::Construct(int width, int height)
 
 bool BooleanBitmap::GetAt(int row, int col)
 {
-	assert(row >= 0 && row < m_heightPixels);
-	assert(col >= 0 && col < m_widthPixels);
+    assert(row >= 0 && row < m_heightPixels);
+    assert(col >= 0 && col < m_widthPixels);
 	return m_board[row * m_widthPixels + col];
 }
 

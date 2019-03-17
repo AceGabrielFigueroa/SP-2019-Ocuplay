@@ -20,7 +20,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    //void createLayer(
+    void createImage(int array[], int height, int width);
 };
 
 #endif // MAINWINDOW_H
