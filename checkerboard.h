@@ -1,7 +1,7 @@
 #ifndef CHECKERBOARD_H
 #define CHECKERBOARD_H
 
-#include "BooleanBitMap.h"
+#include "booleanbitmap.h"
 
 class CheckerBoard : public BooleanBitMap
 {

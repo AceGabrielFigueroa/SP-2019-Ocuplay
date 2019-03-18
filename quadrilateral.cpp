@@ -1,4 +1,5 @@
 #include "quadrilateral.h"
+#include<math.h>
 
 /********************
  * how does quadArea work as it is not declared in the header?
@@ -15,9 +16,9 @@ Quadrilateral::Quadrilateral() // constructor
 
 }
 
-Quadrilateral::Quadrilateral(int width, int height int columns, int rows, boolean randomSquare = false)
+Quadrilateral::Quadrilateral(int width, int height, int columns, int rows, bool randomSquare)
 {
-    Construct(width, height, rows, columns); // Inherited construct method taking parameters from Quadrilateral
+    construct(width, height, rows, columns); // Inherited construct method taking parameters from Quadrilateral
     m_random = randomSquare;
     Draw();
 }
@@ -31,10 +32,10 @@ Quadrilateral:: ~Quadrilateral()
 
 void Quadrilateral::Draw()
 {
-    int blkWidth = m_widthPixels / m_columns;
-    int blkHeight = m_heightPixels / m_rows;
-    for (auto row = 0; row < m_rows; row++) {
-        for (auto col = 0; col < m_columns; col++)
+    int blkWidth = m_widthPixels / m_column;
+    int blkHeight = m_heightPixels / m_row;
+    for (auto row = 0; row < m_row; row++) {
+        for (auto col = 0; col < m_column; col++)
             Fill(row, col, blkWidth, blkHeight);
     }
 }
@@ -47,18 +48,18 @@ void Quadrilateral::Fill(int row, int col, int wid, int hgt)
     const double minQuadArea = wid * hgt / 4.0;
     bool inner = rand() % 2 == 0;
     bool outer = !inner;
-    float fillArea = wid * hgt;
+    //float fillArea = wid * hgt;
 
     // Check for minimum size
     // -- if less, than fill whole block with the same bool value
     if (wid < 5 || hgt < 5)
     {
-        boolean value = rand() % 2 == 0;
+        bool value = rand() % 2 == 0;
         for (auto y = 0; y < hgt; y++)
         {
             int thisrow = r + y;
             for (auto x = 0; x < wid; x++)
-                SetAt(thisrow, c + x,	value);
+                setAt(thisrow, c + x,	value);
 
         }
     } // End small quads
@@ -196,18 +197,18 @@ int  Quadrilateral::xValue(int x1, int y1, int x2, int y2, int y)
     return abs((int)(x1 + (y - y1) / slope));
 }
 
-void Quadrilateral::FillLine(int xleft, int xright, int wid, int row, int col, boolean outer)
+void Quadrilateral::FillLine(int xleft, int xright, int wid, int row, int col, bool outer)
 {
     if (xleft == xright)
     {
         for (auto x = 0; x < wid; x++)
-            SetAt(row, col + x, outer);
-        SetAt(row, xleft, !outer);
+            setAt(row, col + x, outer);
+        setAt(row, xleft, !outer);
     }
     else
     {
-        for (auto x = 0; x < xleft; x++)		SetAt(row, col + x, outer);
-        for (auto x = xleft; x < xright; x++)	SetAt(row, col + x, !outer);
-        for (auto x = xright; x < wid; x++)		SetAt(row, col + x, outer);
+        for (auto x = 0; x < xleft; x++)		setAt(row, col + x, outer);
+        for (auto x = xleft; x < xright; x++)	setAt(row, col + x, !outer);
+        for (auto x = xright; x < wid; x++)		setAt(row, col + x, outer);
     }
 }
