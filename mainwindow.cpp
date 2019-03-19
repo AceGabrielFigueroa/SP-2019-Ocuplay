@@ -119,24 +119,47 @@ void MainWindow::createImage(int *array, int height, int width) {
 }
 
 // Notifies the user if the input is accepted or not
-void MainWindow::on_le_r1_textChanged(const QString &arg1)
-{   bool* check = new bool(false);
+void MainWindow::on_le_r1_textChanged(const QString &arg1) { textChanged_notify(ui->le_img_h, ui->le_r1, arg1); }
+void MainWindow::on_le_r2_textChanged(const QString &arg1) { textChanged_notify(ui->le_img_h, ui->le_r2, arg1); }
+void MainWindow::on_le_r3_textChanged(const QString &arg1) { textChanged_notify(ui->le_img_h, ui->le_r3, arg1); }
+void MainWindow::on_le_r4_textChanged(const QString &arg1) { textChanged_notify(ui->le_img_h, ui->le_r4, arg1); }
+void MainWindow::on_le_r5_textChanged(const QString &arg1) { textChanged_notify(ui->le_img_h, ui->le_r5, arg1); }
+void MainWindow::on_le_r6_textChanged(const QString &arg1) { textChanged_notify(ui->le_img_h, ui->le_r6, arg1); }
+void MainWindow::on_le_r7_textChanged(const QString &arg1) { textChanged_notify(ui->le_img_h, ui->le_r7, arg1); }
+void MainWindow::on_le_r8_textChanged(const QString &arg1) { textChanged_notify(ui->le_img_h, ui->le_r8, arg1); }
 
+void MainWindow::on_le_c1_textChanged(const QString &arg1) { textChanged_notify(ui->le_img_wd, ui->le_c1, arg1); }
+void MainWindow::on_le_c2_textChanged(const QString &arg1) { textChanged_notify(ui->le_img_wd, ui->le_c2, arg1); }
+void MainWindow::on_le_c3_textChanged(const QString &arg1) { textChanged_notify(ui->le_img_wd, ui->le_c3, arg1); }
+void MainWindow::on_le_c4_textChanged(const QString &arg1) { textChanged_notify(ui->le_img_wd, ui->le_c4, arg1); }
+void MainWindow::on_le_c5_textChanged(const QString &arg1) { textChanged_notify(ui->le_img_wd, ui->le_c5, arg1); }
+void MainWindow::on_le_c6_textChanged(const QString &arg1) { textChanged_notify(ui->le_img_wd, ui->le_c6, arg1); }
+void MainWindow::on_le_c7_textChanged(const QString &arg1) { textChanged_notify(ui->le_img_wd, ui->le_c7, arg1); }
+void MainWindow::on_le_c8_textChanged(const QString &arg1) { textChanged_notify(ui->le_img_wd, ui->le_c8, arg1); }
+
+
+// Logic to notify user if input is accepted or not
+// determines if inputs can be convert from Qstring -> int
+// if not, display a color
+// then determine if int is a factor
+// CRASHES IF 0 % 0
+void MainWindow::textChanged_notify(QLineEdit* q1, QLineEdit *q2, const QString &arg1) {
+    bool* check = new bool(false);
     arg1.toInt(check);
 
     if(*check) {
-        if(checkNum(ui->le_img_h->text().toInt(),
-                    ui->le_r1->text().toInt())) {
-            ui->le_r1->setStyleSheet("background-color: lightgreen");
-        } else {
-         ui->le_r1->setStyleSheet("background-color: lightred");
-        }
+        if(checkNum(q1->text().toInt(), q2->text().toInt())) {
+            q2->setStyleSheet("background-color: lightgreen");
+         } else {
+            q2->setStyleSheet("background-color: pink");
+         }
     } else {
-        ui->le_r1->setStyleSheet("background-color: lightgray");
+        q2->setStyleSheet("background-color: lightgrey");
     }
 
     delete check;
 }
+
 
 // Checks if the num is a factor of it
 // Mainly used to check if the user inputs a width/height
