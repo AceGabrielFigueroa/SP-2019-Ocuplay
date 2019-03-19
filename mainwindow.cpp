@@ -86,7 +86,7 @@ void MainWindow::displayImage(QImage img) {
 // This creates an image in memory. Can save if wanted.
 void MainWindow::createImage(int *array, int height, int width) {
 
-    std::ifstream _COLOR_TABLE_FILE("C:\\Users\\acegf\\Documents\\QT\\Visual\\resources\\color.txt");
+    std::ifstream _COLOR_TABLE_FILE("..\\Visual\\resources\\color.txt");
     QColor _COLOR_TABLE[256];
     QImage image = QImage(width, height, QImage::Format_RGB888);
     int _TEMP_C;
