@@ -202,8 +202,8 @@ void BooleanBitmap::Show()
 #define CH(c) sprintf_s(bufr, "%c", c);
 #define NL() CH('\n');
 
-	CH('-');
-	sprintf_s(bufr, "\nRows %d  Cols %2d\n", m_heightPixels, m_widthPixels);
+//	CH('-');
+//	sprintf_s(bufr, "\nRows %d  Cols %2d\n", m_heightPixels, m_widthPixels);
 	for (auto row = 0; row < m_heightPixels; row++) {
         buffer = "";
         for (auto col = 0; col < m_widthPixels; col++) {
@@ -224,3 +224,13 @@ void BooleanBitmap::Show()
 
 }
 
+// These functions return a random number to the caller
+int BooleanBitmap::irand(int n)
+{
+    return rand() % n;
+}
+
+int BooleanBitmap::irand(int lo, int hi)
+{
+    return lo + rand() % (hi - lo + 1);
+}

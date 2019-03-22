@@ -28,12 +28,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     BooleanBitmap.cpp \
-    CheckerBoard.cpp
+    CheckerBoard.cpp \
+    BrokenSqr.cpp
 
 HEADERS += \
         mainwindow.h \
     BooleanBitmap.h \
-    CheckerBoard.h
+    CheckerBoard.h \
+    BrokenSqr.h
 
 FORMS += \
         mainwindow.ui
