@@ -26,8 +26,6 @@ void MainWindow::on_btn_create_img_clicked()
 
     int width=ui->le_img_wd->text().toInt();
     int height=ui->le_img_h->text().toInt();
-    qDebug() << width;
-    qDebug() << height;
 
     CheckerBoard checker1 = CheckerBoard(width, height,
                                          ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
@@ -54,7 +52,6 @@ void MainWindow::on_btn_create_img_clicked()
                                          ui->le_c8->text().toInt(), ui->le_r8->text().toInt(), true);
 
     int *result = new int[width * height];
-    QString s;
 
     for(int i = 0; i < height; i++)
     {
@@ -84,7 +81,7 @@ void MainWindow::displayImage(QImage img) {
 }
 
 // This creates an image in memory. Can save if wanted.
-void MainWindow::createImage(int *array, int height, int width) {
+QImage MainWindow::createImage(int *array, int height, int width) {
 
     std::ifstream _COLOR_TABLE_FILE("..\\Visual\\resources\\color.txt");
     QColor _COLOR_TABLE[256];
@@ -113,9 +110,11 @@ void MainWindow::createImage(int *array, int height, int width) {
                                                         QString(),
                                                         tr("Images (*.bmp)"));
     image.save(fileName);
-    */
 
+    */
     displayImage(image);
+
+    return image;
 }
 
 // Notifies the user if the input is accepted or not
@@ -165,10 +164,16 @@ void MainWindow::textChanged_notify(QLineEdit* q1, QLineEdit *q2, const QString 
 // Mainly used to check if the user inputs a width/height
 // is divisible by the col/row
 bool MainWindow::checkNum(int a, int b) {
-    if(a % b) {
+
+    if(a % (b ? b : 1)) {
         return false;
     }
     else {
         return true;
     }
+}
+
+void MainWindow::on_btn_render_clicked()
+{
+//    displayImage(MainWindow::createImage());
 }
