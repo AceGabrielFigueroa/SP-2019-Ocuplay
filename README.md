@@ -18,7 +18,9 @@ To get started on this project, you will need to install the following:
       5. Once downloaded, clone the repositiory to your device.
       6. Verify if you can run the project.
       
-# How To Compile and Run
+# How To Compile and Run on Qt Creator
+* You may use a different development environment if you wish to do so. This is only instructions on Qt Creator *
+
 Once everything is installed and you have cloned the repository, open the project files in Qt Creator which you should have installed. From there you will be able to compile our code. 
 
 To compile, select the "Build" option on the top of your menu bar. Then select to build this project. To check if it compiled there will be a green status bar on the bottom right of Qt Creator. Once it is fully green, you will know that it compiled correctly. From there you can go ahead and run the program. 
@@ -46,14 +48,17 @@ Some layout options for each layer include:
 # Code Break Down
 
 # Authors/Contributors
-- Ace Gaberiel Figueroa 
--
--
--
--
+- Ace Gaberiel Figueroa (Project Lead / Developer)
+- Ryan Pisuena (Developer)
+- Eric Sy (Developer)
+- Cristian Cisneros Alvarez (Developer)
+- Dominiq Martinez (Designer)
 
 # Acknowledgments
 
--
--
--
+- Steve Schlesinger (Client)
+- Dr. Yongije Zheng (Project Advisor)
+- Dr. Youwen Ouyang () 
+- Dr. Marisol Clarke-Ibanez ()
+- Dr.          Gilmore ()
+- Mae Talicuran ()
