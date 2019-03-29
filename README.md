@@ -31,7 +31,7 @@ If you are unable to run the project, do not hesitate to contact me.
 
 Once you run the program, there should be a window that allows you to input the width and height of the image
 
-Then, you are allowed to select the rows and columns of each layer. *Note* you cannot make them greater than the width and the height. If you do not wish to select your own values there is a random selection button you may use that will store values randomly for you. *Note* there is also a reset button that clears everything.
+Then, you are allowed to select the rows and columns of each layer. *Note*: you cannot make them greater than the width and the height. If you do not wish to select your own values there is a random selection button you may use that will store values randomly for you. *Note*: there is also a reset button that clears everything.
 
 Once you are happy will your inputs, you can go ahead and select create image
 
