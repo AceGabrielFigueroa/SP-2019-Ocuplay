@@ -29,13 +29,32 @@ SOURCES += \
         mainwindow.cpp \
     BooleanBitmap.cpp \
     CheckerBoard.cpp \
+<<<<<<< HEAD \
+    BooleanBitmap.cpp \
+    BrokenSqr.cpp \
+    CheckerBoard.cpp \
+    EllipseBoard.cpp \
+    main.cpp \
+    mainwindow.cpp
     BrokenSqr.cpp
+=======
+    EllipseBoard.cpp
+>>>>>>> 15ea5826cb6f0e7f521ea5ffbd1edcc87cd7afc1
 
 HEADERS += \
         mainwindow.h \
     BooleanBitmap.h \
     CheckerBoard.h \
+<<<<<<< HEAD \
+    BooleanBitmap.h \
+    BrokenSqr.h \
+    CheckerBoard.h \
+    EllipseBoard.h \
+    mainwindow.h
     BrokenSqr.h
+=======
+    EllipseBoard.h
+>>>>>>> 15ea5826cb6f0e7f521ea5ffbd1edcc87cd7afc1
 
 FORMS += \
         mainwindow.ui
