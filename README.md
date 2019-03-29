@@ -45,7 +45,8 @@ Some layout options for each layer include:
 5) Square with Hole
 6) Quadrilateral
 
-# Code Break Down
+# Break Down
+We basically implemented different source files that created different shapes and combined them to create a GUI using the Qt library.
 
 # Authors/Contributors
 - Ace Gaberiel Figueroa (Project Lead / Developer)
@@ -60,5 +61,5 @@ Some layout options for each layer include:
 - Dr. Yongije Zheng (Project Advisor)
 - Dr. Youwen Ouyang () 
 - Dr. Marisol Clarke-Ibanez ()
-- Dr.          Gilmore ()
+- Dr. Jeffrey Gilmore ()
 - Mae Talicuran ()
