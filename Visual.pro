@@ -29,13 +29,15 @@ SOURCES += \
         mainwindow.cpp \
     BooleanBitmap.cpp \
     CheckerBoard.cpp \
-    EllipseBoard.cpp
+    EllipseBoard.cpp \
+    SquareWithHole.cpp
 
 HEADERS += \
         mainwindow.h \
     BooleanBitmap.h \
     CheckerBoard.h \
-    EllipseBoard.h
+    EllipseBoard.h \
+    SquareWithHole.h
 
 FORMS += \
         mainwindow.ui
