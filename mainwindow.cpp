@@ -83,7 +83,7 @@ void MainWindow::displayImage(QImage img) {
 // This creates an image in memory. Can save if wanted.
 QImage MainWindow::createImage(int *array, int height, int width) {
 
-    std::ifstream _COLOR_TABLE_FILE("C:\\Users\\erics\\OneDrive\\Documents\\GitHub\\SP-2019-Ocuplay\\resources\\color.txt");
+    std::ifstream _COLOR_TABLE_FILE("C:\\Users\\erics\\Desktop\\Projects\\QTbuild\\SP-2019-Ocuplay\\resources\\color.txt");
     QColor _COLOR_TABLE[256];
     QImage image = QImage(width, height, QImage::Format_RGB888);
     int _TEMP_C;
@@ -176,4 +176,9 @@ bool MainWindow::checkNum(int a, int b) {
 void MainWindow::on_btn_render_clicked()
 {
 //    displayImage(MainWindow::createImage());
+}
+
+void MainWindow::on_btn_get_clr_clicked()
+{
+
 }

@@ -30,6 +30,7 @@ SOURCES += \
     BooleanBitmap.cpp \
     CheckerBoard.cpp \
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD \
     BooleanBitmap.cpp \
     BrokenSqr.cpp \
@@ -44,11 +45,16 @@ SOURCES += \
 =======
     EllipseBoard.cpp
 >>>>>>> 15ea5826cb6f0e7f521ea5ffbd1edcc87cd7afc1
+=======
+    EllipseBoard.cpp \
+    SquareWithHole.cpp
+>>>>>>> 381f5292e6b0102287dd7a6433a3e12bf4c16303
 
 HEADERS += \
         mainwindow.h \
     BooleanBitmap.h \
     CheckerBoard.h \
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD \
     BooleanBitmap.h \
@@ -63,6 +69,10 @@ HEADERS += \
 =======
     EllipseBoard.h
 >>>>>>> 15ea5826cb6f0e7f521ea5ffbd1edcc87cd7afc1
+=======
+    EllipseBoard.h \
+    SquareWithHole.h
+>>>>>>> 381f5292e6b0102287dd7a6433a3e12bf4c16303
 
 FORMS += \
         mainwindow.ui

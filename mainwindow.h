@@ -41,6 +41,8 @@ private slots:
 
     void on_btn_render_clicked();
 
+    void on_btn_get_clr_clicked();
+
 private:
     Ui::MainWindow *ui;
 
