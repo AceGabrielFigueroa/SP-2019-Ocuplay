@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "CheckerBoard.h"
+#include "EllipseBoard.h"
 #include <fstream>
 #include <QDebug>
 #include <QFileDialog>
@@ -11,6 +12,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    ui->buttonGroup->setId(ui->rb_rect, 0);
+    ui->buttonGroup->setId(ui->rb_triangle, 1);
+    ui->buttonGroup->setId(ui->rb_ellipse, 2);
+    ui->buttonGroup->setId(ui->rb_brokensqr, 3);
+    ui->buttonGroup->setId(ui->rb_sqr_w_hole, 4);
+    ui->buttonGroup->setId(ui->rb_quad, 5);
+
 }
 
 MainWindow::~MainWindow()
@@ -23,6 +32,8 @@ void MainWindow::on_btn_create_img_clicked()
 {
     // TODO: error check to see if line_box is an actually integer
     //
+
+    qDebug()<< ui->buttonGroup->checkedId();
 
     int width=ui->le_img_wd->text().toInt();
     int height=ui->le_img_h->text().toInt();
@@ -83,7 +94,7 @@ void MainWindow::displayImage(QImage img) {
 // This creates an image in memory. Can save if wanted.
 QImage MainWindow::createImage(int *array, int height, int width) {
 
-    std::ifstream _COLOR_TABLE_FILE("C:\\Users\\erics\\OneDrive\\Documents\\GitHub\\SP-2019-Ocuplay\\resources\\color.txt");
+    std::ifstream _COLOR_TABLE_FILE("..\\Visual\\resources\\color.txt");
     QColor _COLOR_TABLE[256];
     QImage image = QImage(width, height, QImage::Format_RGB888);
     int _TEMP_C;
@@ -105,13 +116,13 @@ QImage MainWindow::createImage(int *array, int height, int width) {
             for (int j = 0; j < width; j++)
                 image.setPixelColor(i, j, _COLOR_TABLE[array[(i * height) + j]]);
 
-    /*
+
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save Image File"),
                                                         QString(),
                                                         tr("Images (*.bmp)"));
     image.save(fileName);
 
-    */
+
     displayImage(image);
 
     return image;
