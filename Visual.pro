@@ -30,14 +30,16 @@ SOURCES += \
     BooleanBitmap.cpp \
     CheckerBoard.cpp \
     EllipseBoard.cpp \
-    SquareWithHole.cpp
+    SquareWithHole.cpp \
+    Quadrilateral.cpp
 
 HEADERS += \
         mainwindow.h \
     BooleanBitmap.h \
     CheckerBoard.h \
     EllipseBoard.h \
-    SquareWithHole.h
+    SquareWithHole.h \
+    Quadrilateral.h
 
 FORMS += \
         mainwindow.ui
