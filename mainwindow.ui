@@ -6,6 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
+<<<<<<< HEAD
     <width>587</width>
     <height>425</height>
    </rect>
@@ -22,10 +23,17 @@
     <height>425</height>
    </size>
   </property>
+=======
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+>>>>>>> Initial commit
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
+<<<<<<< HEAD
    <property name="sizePolicy">
     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
      <horstretch>0</horstretch>
@@ -896,6 +904,20 @@
       </widget>
      </item>
     </layout>
+=======
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>140</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+>>>>>>> Initial commit
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -903,6 +925,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
+<<<<<<< HEAD
      <width>587</width>
      <height>21</height>
     </rect>
@@ -914,6 +937,22 @@
    </widget>
    <addaction name="menuFile"/>
   </widget>
+=======
+     <width>400</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+>>>>>>> Initial commit
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
