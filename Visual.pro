@@ -47,8 +47,13 @@ SOURCES += \
 >>>>>>> 15ea5826cb6f0e7f521ea5ffbd1edcc87cd7afc1
 =======
     EllipseBoard.cpp \
+<<<<<<< HEAD
     SquareWithHole.cpp
 >>>>>>> 381f5292e6b0102287dd7a6433a3e12bf4c16303
+=======
+    SquareWithHole.cpp \
+    Quadrilateral.cpp
+>>>>>>> e4016cd81acd014ff804ea846f4d5ecdbe0d5f61
 
 HEADERS += \
         mainwindow.h \
@@ -71,8 +76,13 @@ HEADERS += \
 >>>>>>> 15ea5826cb6f0e7f521ea5ffbd1edcc87cd7afc1
 =======
     EllipseBoard.h \
+<<<<<<< HEAD
     SquareWithHole.h
 >>>>>>> 381f5292e6b0102287dd7a6433a3e12bf4c16303
+=======
+    SquareWithHole.h \
+    Quadrilateral.h
+>>>>>>> e4016cd81acd014ff804ea846f4d5ecdbe0d5f61
 
 FORMS += \
         mainwindow.ui
