@@ -43,6 +43,10 @@ private slots:
 
     void on_btn_get_clr_clicked();
 
+    void on_btn_random_clicked();
+
+    void on_btn_reset_clicked();
+
 private:
     Ui::MainWindow *ui;
 

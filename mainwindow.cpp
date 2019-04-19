@@ -20,6 +20,70 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->buttonGroup->setId(ui->rb_sqr_w_hole, 4);
     ui->buttonGroup->setId(ui->rb_quad, 5);
 
+    ui->comboBox->addItem("Select a shape");
+    ui->comboBox->addItem("Rectangle");
+    ui->comboBox->addItem("Triangle");
+    ui->comboBox->addItem("Ellipse");
+    ui->comboBox->addItem("Broken Square");
+    ui->comboBox->addItem("Square with Hole");
+    ui->comboBox->addItem("Quadrilateral");
+
+    ui->comboBox_2->addItem("Select a shape");
+    ui->comboBox_2->addItem("Rectangle");
+    ui->comboBox_2->addItem("Triangle");
+    ui->comboBox_2->addItem("Ellipse");
+    ui->comboBox_2->addItem("Broken Square");
+    ui->comboBox_2->addItem("Square with Hole");
+    ui->comboBox_2->addItem("Quadrilateral");
+
+    ui->comboBox_3->addItem("Select a shape");
+    ui->comboBox_3->addItem("Rectangle");
+    ui->comboBox_3->addItem("Triangle");
+    ui->comboBox_3->addItem("Ellipse");
+    ui->comboBox_3->addItem("Broken Square");
+    ui->comboBox_3->addItem("Square with Hole");
+    ui->comboBox_3->addItem("Quadrilateral");
+
+    ui->comboBox_4->addItem("Select a shape");
+    ui->comboBox_4->addItem("Rectangle");
+    ui->comboBox_4->addItem("Triangle");
+    ui->comboBox_4->addItem("Ellipse");
+    ui->comboBox_4->addItem("Broken Square");
+    ui->comboBox_4->addItem("Square with Hole");
+    ui->comboBox_4->addItem("Quadrilateral");
+
+    ui->comboBox_5->addItem("Select a shape");
+    ui->comboBox_5->addItem("Rectangle");
+    ui->comboBox_5->addItem("Triangle");
+    ui->comboBox_5->addItem("Ellipse");
+    ui->comboBox_5->addItem("Broken Square");
+    ui->comboBox_5->addItem("Square with Hole");
+    ui->comboBox_5->addItem("Quadrilateral");
+
+    ui->comboBox_6->addItem("Select a shape");
+    ui->comboBox_6->addItem("Rectangle");
+    ui->comboBox_6->addItem("Triangle");
+    ui->comboBox_6->addItem("Ellipse");
+    ui->comboBox_6->addItem("Broken Square");
+    ui->comboBox_6->addItem("Square with Hole");
+    ui->comboBox_6->addItem("Quadrilateral");
+
+    ui->comboBox_7->addItem("Select a shape");
+    ui->comboBox_7->addItem("Rectangle");
+    ui->comboBox_7->addItem("Triangle");
+    ui->comboBox_7->addItem("Ellipse");
+    ui->comboBox_7->addItem("Broken Square");
+    ui->comboBox_7->addItem("Square with Hole");
+    ui->comboBox_7->addItem("Quadrilateral");
+
+    ui->comboBox_8->addItem("Select a shape");
+    ui->comboBox_8->addItem("Rectangle");
+    ui->comboBox_8->addItem("Triangle");
+    ui->comboBox_8->addItem("Ellipse");
+    ui->comboBox_8->addItem("Broken Square");
+    ui->comboBox_8->addItem("Square with Hole");
+    ui->comboBox_8->addItem("Quadrilateral");
+
 }
 
 MainWindow::~MainWindow()
@@ -193,4 +257,26 @@ void MainWindow::on_btn_render_clicked()
 void MainWindow::on_btn_get_clr_clicked()
 {
 
+}
+
+void MainWindow::on_btn_random_clicked()
+{
+    const int SIZE = 16;
+
+    int array[SIZE];
+
+    for (int i = 0; i < 16; i++)
+    {
+        array[i] = rand() % 100 + 1;
+    }
+
+   // ui->le_r1->
+}
+
+void MainWindow::on_btn_reset_clicked()
+{
+    foreach(QLineEdit* le, findChildren<QLineEdit*>())
+    {
+        le->clear();
+    }
 }
