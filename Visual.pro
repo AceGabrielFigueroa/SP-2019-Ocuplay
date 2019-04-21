@@ -25,64 +25,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
-    BooleanBitmap.cpp \
-    CheckerBoard.cpp \
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD \
+    main.cpp \
+    mainwindow.cpp \
     BooleanBitmap.cpp \
     BrokenSqr.cpp \
     CheckerBoard.cpp \
     EllipseBoard.cpp \
-    main.cpp \
-    mainwindow.cpp
-    BrokenSqr.cpp
-=======
-    EllipseBoard.cpp
->>>>>>> 15ea5826cb6f0e7f521ea5ffbd1edcc87cd7afc1
-=======
-    EllipseBoard.cpp
->>>>>>> 15ea5826cb6f0e7f521ea5ffbd1edcc87cd7afc1
-=======
-    EllipseBoard.cpp \
-<<<<<<< HEAD
-    SquareWithHole.cpp
->>>>>>> 381f5292e6b0102287dd7a6433a3e12bf4c16303
-=======
     SquareWithHole.cpp \
-    Quadrilateral.cpp
->>>>>>> e4016cd81acd014ff804ea846f4d5ecdbe0d5f61
+    Quadrilateral.cpp \
 
 HEADERS += \
-        mainwindow.h \
-    BooleanBitmap.h \
-    CheckerBoard.h \
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD \
+    mainwindow.h \
     BooleanBitmap.h \
     BrokenSqr.h \
     CheckerBoard.h \
     EllipseBoard.h \
-    mainwindow.h
-    BrokenSqr.h
-=======
-    EllipseBoard.h
->>>>>>> 15ea5826cb6f0e7f521ea5ffbd1edcc87cd7afc1
-=======
-    EllipseBoard.h
->>>>>>> 15ea5826cb6f0e7f521ea5ffbd1edcc87cd7afc1
-=======
-    EllipseBoard.h \
-<<<<<<< HEAD
-    SquareWithHole.h
->>>>>>> 381f5292e6b0102287dd7a6433a3e12bf4c16303
-=======
     SquareWithHole.h \
-    Quadrilateral.h
->>>>>>> e4016cd81acd014ff804ea846f4d5ecdbe0d5f61
+    Quadrilateral.h \
 
 FORMS += \
         mainwindow.ui

@@ -144,23 +144,16 @@
                </widget>
               </item>
               <item>
+               <widget class="QPushButton" name="btn_save_img">
+                <property name="text">
+                 <string>Save Image</string>
+                </property>
+               </widget>
+              </item>
+              <item>
                <widget class="QPushButton" name="btn_create_img">
                 <property name="text">
                  <string>Create Image</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btn_render">
-                <property name="text">
-                 <string>Render Image</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btn_nxt_img">
-                <property name="text">
-                 <string>Next Image</string>
                 </property>
                </widget>
               </item>
@@ -279,7 +272,7 @@
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QLineEdit" name="le_img_h">
+             <widget class="QLineEdit" name="Height">
               <property name="maximumSize">
                <size>
                 <width>50</width>
@@ -289,7 +282,7 @@
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QLineEdit" name="le_img_wd">
+             <widget class="QLineEdit" name="Width">
               <property name="maximumSize">
                <size>
                 <width>50</width>
@@ -940,7 +933,7 @@
      <x>0</x>
      <y>0</y>
      <width>1101</width>
-     <height>22</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>

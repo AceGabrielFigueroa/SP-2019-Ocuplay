@@ -18,8 +18,6 @@ public:
 
 private slots:
 
-    void on_btn_create_img_clicked();
-
     void on_le_r1_textChanged(const QString &arg1);
     void on_le_r2_textChanged(const QString &arg1);
     void on_le_r3_textChanged(const QString &arg1);
@@ -38,25 +36,25 @@ private slots:
     void on_le_c7_textChanged(const QString &arg1);
     void on_le_c8_textChanged(const QString &arg1);
 
-
-    void on_btn_render_clicked();
-
-    void on_btn_get_clr_clicked();
-
     void on_btn_random_clicked();
 
     void on_btn_reset_clicked();
+
+    void on_btn_save_img_clicked();
+
+    void on_btn_create_img_clicked();
 
 private:
     Ui::MainWindow *ui;
 
 
-
+    QImage myImage;
     bool checkNum(int a, int b);
     void textChanged_notify(QLineEdit* q1, QLineEdit* q2, const QString &arg1);
 
-    void renderImage();
-    QImage createImage(int array[], int height, int width);
+    void createImage();
+    void saveImage();
+    void colorImage(int array[], int height, int width);
     void displayImage(QImage img);
 };
 
