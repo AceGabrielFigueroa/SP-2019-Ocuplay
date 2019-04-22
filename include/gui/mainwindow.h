@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <QLineEdit>
-#include "CheckerBoard.h"
+#include "include/CheckerBoard.h"
 
 namespace Ui {
 class MainWindow;

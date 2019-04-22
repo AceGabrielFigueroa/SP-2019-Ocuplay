@@ -1,5 +1,4 @@
-//#include "stdafx.h"
-#include "EllipseBoard.h"
+#include "include/EllipseBoard.h"
 #include <stdlib.h>     /* srand, rand */
 #include <math.h>
 

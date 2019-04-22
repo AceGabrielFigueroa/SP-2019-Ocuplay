@@ -1,5 +1,4 @@
-//#include "stdafx.h"
-#include "SquareWithHole.h"
+#include "include/SquareWithHole.h"
 #include <stdlib.h>     /* srand, rand */
 #include <math.h>
 #include <assert.h>     /* assert */

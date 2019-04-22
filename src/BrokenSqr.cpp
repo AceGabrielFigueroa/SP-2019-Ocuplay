@@ -1,5 +1,5 @@
 //#include "stdafx.h"
-#include "BrokenSqr.h"
+#include "include/BrokenSqr.h"
 
 BrokenSqr::BrokenSqr()
 {

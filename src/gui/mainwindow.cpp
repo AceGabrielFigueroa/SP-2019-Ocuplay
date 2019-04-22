@@ -1,11 +1,11 @@
-#include "mainwindow.h"
+#include "include/gui/mainwindow.h"
 #include "ui_mainwindow.h"
-#include "CheckerBoard.h"
-#include "EllipseBoard.h"
-#include "SquareWithHole.h"
-#include "BrokenSqr.h"
-#include "Quadrilateral.h"
-#include "TriangleBoard.h"
+#include "include/CheckerBoard.h"
+#include "include/EllipseBoard.h"
+#include "include/SquareWithHole.h"
+#include "include/BrokenSqr.h"
+#include "include/Quadrilateral.h"
+#include "include/TriangleBoard.h"
 #include <fstream>
 #include <QDebug>
 #include <QFileDialog>
@@ -294,7 +294,7 @@ void MainWindow::saveImage()
 
 void MainWindow::colorImage(int *array, int height, int width) {
 
-   std::ifstream _COLOR_TABLE_FILE("C:/Users/erics/Desktop/Projects/QTbuild/SP-2019-Ocuplay/resources/color.txt");
+   std::ifstream _COLOR_TABLE_FILE("res/");
 
    QColor _COLOR_TABLE[256];
    QImage image = QImage(width, height, QImage::Format_RGB888);

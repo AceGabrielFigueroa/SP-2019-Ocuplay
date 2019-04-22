@@ -1,4 +1,4 @@
-#include "BooleanBitmap.h"
+#include "include/BooleanBitmap.h"
 #include <iostream>
 #include <QDebug>
 #include <assert.h>

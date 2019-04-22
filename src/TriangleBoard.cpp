@@ -1,4 +1,4 @@
-#include "TriangleBoard.h"
+#include "include/TriangleBoard.h"
 #include <random>
 
 

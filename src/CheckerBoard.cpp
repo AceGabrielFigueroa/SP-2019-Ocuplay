@@ -1,5 +1,5 @@
-#include "CheckerBoard.h"
-#include "BooleanBitmap.h"
+#include "include/CheckerBoard.h"
+#include "include/BooleanBitmap.h"
 #include <random>
 #include <assert.h>
 
