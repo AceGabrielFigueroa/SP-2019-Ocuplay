@@ -17,6 +17,8 @@ public:
 	void RotateCounter(BooleanBitmap* fromBM, int fromX, int fromY, int toX, int toY, int size);
 	void FlipVert(BooleanBitmap* fromBM, int fromX, int fromY, int toX, int toY, int wid, int hgt);
 	void FlipHoriz(BooleanBitmap* fromBM, int fromX, int fromY, int toX, int toY, int wid, int hgt);
+    int irand(int n);
+    int irand(int lo, int hi);
 
 private:
 

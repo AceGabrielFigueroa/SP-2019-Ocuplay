@@ -25,21 +25,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
+    main.cpp \
+    mainwindow.cpp \
     BooleanBitmap.cpp \
+    BrokenSqr.cpp \
     CheckerBoard.cpp \
     EllipseBoard.cpp \
     SquareWithHole.cpp \
-    Quadrilateral.cpp
+    Quadrilateral.cpp \
 
 HEADERS += \
-        mainwindow.h \
+    mainwindow.h \
     BooleanBitmap.h \
+    BrokenSqr.h \
     CheckerBoard.h \
     EllipseBoard.h \
     SquareWithHole.h \
-    Quadrilateral.h
+    Quadrilateral.h \
 
 FORMS += \
         mainwindow.ui
