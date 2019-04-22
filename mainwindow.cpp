@@ -5,6 +5,7 @@
 #include "SquareWithHole.h"
 #include "BrokenSqr.h"
 #include "Quadrilateral.h"
+#include "TriangleBoard.h"
 #include <fstream>
 #include <QDebug>
 #include <QFileDialog>
