@@ -2,6 +2,9 @@
 #include "ui_mainwindow.h"
 #include "CheckerBoard.h"
 #include "EllipseBoard.h"
+#include "SquareWithHole.h"
+#include "BrokenSqr.h"
+#include "Quadrilateral.h"
 #include <fstream>
 #include <QDebug>
 #include <QFileDialog>
@@ -165,36 +168,36 @@ CheckerBoard MainWindow::pickShape(int choice)
     {
     case 1:
 
-        return CheckerBoard(width, height, ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+        return CheckerBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
 
         break;
 
     case 2:
 
-        return TriangleBoard(width, height, ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+        return TriangleBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
 
         break;
 
     case 3:
 
-        return EllipseBoard(width, height, ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+        return EllipseBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
 
         break;
 
     case 4:
 
-        return BrokenSqr(width, height, ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+        return BrokenSqr(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
 
         break;
 
     case 5:
 
-        return SquareWithHole(width, height, ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+        return SquareWithHole(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt());
 
         break;
     case 6:
 
-        return Quadrilateral(width, height, ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+        return Quadrilateral(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
 
         break;
 
@@ -207,18 +210,13 @@ CheckerBoard MainWindow::pickShape(int choice)
 // Logic for creating an image
 void MainWindow::on_btn_save_img_clicked()
 {
-<<<<<<< HEAD
-    // TODO: error check to see if line_box is an actually integer
-    //
-    qDebug()<< ui->buttonGroup->checkedId();
-=======
+
    // TODO: error check to see if line_box is an actually integer
    //
 
    qDebug()<< ui->buttonGroup->checkedId();
    saveImage();
 }
->>>>>>> 2cda673cc608b6212c71290d0d28b087c28f9df3
 
 void MainWindow::createImage()
 {
