@@ -26,29 +26,32 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp \
-    BooleanBitmap.cpp \
-    BrokenSqr.cpp \
-    CheckerBoard.cpp \
-    EllipseBoard.cpp \
-    SquareWithHole.cpp \
-    Quadrilateral.cpp \
-    TriangleBoard.cpp
+    src/gui/mainwindow.cpp \
+    src/BooleanBitmap.cpp \
+    src/BrokenSqr.cpp \
+    src/CheckerBoard.cpp \
+    src/EllipseBoard.cpp \
+    src/Quadrilateral.cpp \
+    src/SquareWithHole.cpp \
+    src/TriangleBoard.cpp
 
 HEADERS += \
-    mainwindow.h \
-    BooleanBitmap.h \
-    BrokenSqr.h \
-    CheckerBoard.h \
-    EllipseBoard.h \
-    SquareWithHole.h \
-    Quadrilateral.h \
-    TriangleBoard.h
+    include/gui/mainwindow.h \
+    include/BooleanBitmap.h \
+    include/BrokenSqr.h \
+    include/CheckerBoard.h \
+    include/EllipseBoard.h \
+    include/Quadrilateral.h \
+    include/SquareWithHole.h \
+    include/TriangleBoard.h
 
 FORMS += \
-        mainwindow.ui
+    res/mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    res/color.txt
