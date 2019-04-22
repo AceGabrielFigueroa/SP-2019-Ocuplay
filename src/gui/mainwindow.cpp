@@ -292,7 +292,7 @@ void MainWindow::saveImage()
 
 void MainWindow::colorImage(int *array, int height, int width) {
 
-   std::ifstream _COLOR_TABLE_FILE("C:/Users/acegf/Documents/QT/Visual/res");
+   std::ifstream _COLOR_TABLE_FILE("C:/Users/acegf/Documents/QT/Visual/res/color.txt");
 
    QColor _COLOR_TABLE[256];
    QImage image = QImage(width, height, QImage::Format_RGB888);
@@ -320,10 +320,10 @@ void MainWindow::colorImage(int *array, int height, int width) {
                                                        QString(),
                                                        tr("Images (*.bmp)"));
    image.save(fileName);
-
+    */
    displayImage(image);
-*/
-   myImage = image;
+
+   //myImage = image;
 }
 
 // Notifies the user if the input is accepted or not
@@ -409,5 +409,5 @@ void MainWindow::on_btn_reset_clicked()
 void MainWindow::on_btn_create_img_clicked()
 {
     createImage();
-    displayImage(myImage);
+    //displayImage(myImage);
 }
