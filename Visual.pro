@@ -33,6 +33,7 @@ SOURCES += \
     EllipseBoard.cpp \
     SquareWithHole.cpp \
     Quadrilateral.cpp \
+    TriangleBoard.cpp
 
 HEADERS += \
     mainwindow.h \
@@ -42,6 +43,7 @@ HEADERS += \
     EllipseBoard.h \
     SquareWithHole.h \
     Quadrilateral.h \
+    TriangleBoard.h
 
 FORMS += \
         mainwindow.ui
