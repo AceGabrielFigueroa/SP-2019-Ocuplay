@@ -221,8 +221,6 @@ void MainWindow::on_btn_save_img_clicked()
 
 void MainWindow::createImage()
 {
-   qDebug()<< ui->buttonGroup->checkedId();
-
    int width=ui->Width->text().toInt();
    int height=ui->Height->text().toInt();
 
@@ -294,7 +292,7 @@ void MainWindow::saveImage()
 
 void MainWindow::colorImage(int *array, int height, int width) {
 
-   std::ifstream _COLOR_TABLE_FILE("res/");
+   std::ifstream _COLOR_TABLE_FILE("C:/Users/acegf/Documents/QT/Visual/res");
 
    QColor _COLOR_TABLE[256];
    QImage image = QImage(width, height, QImage::Format_RGB888);
