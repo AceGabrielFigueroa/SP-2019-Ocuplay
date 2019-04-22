@@ -91,12 +91,120 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::ComboBoxSelections()
+{
+    QString text;
+
+    text = ui->comboBox->currentText();
+
+    ConvertTexttoInt(text);
+
+    text = ui->comboBox_2->currentText();
+
+    ConvertTexttoInt(text);
+
+    text = ui->comboBox_3->currentText();
+
+    ConvertTexttoInt(text);
+
+    text = ui->comboBox_4->currentText();
+
+    ConvertTexttoInt(text);
+
+    text = ui->comboBox_5->currentText();
+
+    ConvertTexttoInt(text);
+
+    text = ui->comboBox_6->currentText();
+
+    ConvertTexttoInt(text);
+
+    text = ui->comboBox_7->currentText();
+
+    ConvertTexttoInt(text);
+
+    text = ui->comboBox_8->currentText();
+
+    ConvertTexttoInt(text);
+}
+
+int MainWindow::ConvertTexttoInt(QString text) //selection is the text from ComboBoxSelections functions
+{
+    if (text == "Rectangle")
+
+        return 1;
+
+    else if (text == "Triangle")
+
+        return 2;
+
+    else if (text == "Ellipse")
+
+        return 3;
+
+    else if (text == "Broken Square")
+
+        return 4;
+
+    else if (text == "Square with Hole")
+
+        return 5;
+
+    else if (text == "Quadrilateral")
+
+        return 6;
+}
+
+CheckerBoard MainWindow::pickShape(int choice)
+{
+    switch (choice)
+    {
+    case 1:
+
+        return CheckerBoard(width, height, ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+
+        break;
+
+    case 2:
+
+        return TriangleBoard(width, height, ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+
+        break;
+
+    case 3:
+
+        return EllipseBoard(width, height, ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+
+        break;
+
+    case 4:
+
+        return BrokenSqr(width, height, ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+
+        break;
+
+    case 5:
+
+        return SquareWithHole(width, height, ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+
+        break;
+    case 6:
+
+        return Quadrilateral(width, height, ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+
+        break;
+
+    default:
+        qDebug() << "Must select a shape";
+
+    }
+}
+
 // Logic for creating an image
 void MainWindow::on_btn_create_img_clicked()
 {
     // TODO: error check to see if line_box is an actually integer
     //
-
     qDebug()<< ui->buttonGroup->checkedId();
 
     int width=ui->le_img_wd->text().toInt();
