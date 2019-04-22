@@ -1,12 +1,12 @@
-#include "stdafx.h"
 #include "TriangleBoard.h"
+#include <random>
 
 
 TriangleBoard::TriangleBoard()
 {
 }
 
-TriangleBoard::TriangleBoard(int width, int height, int columns, int rows, boolean randomSquare)
+TriangleBoard::TriangleBoard(int width, int height, int columns, int rows, bool randomSquare)
 {
     Construct(width, height, columns, rows);
     m_random = randomSquare;
@@ -137,7 +137,8 @@ void TriangleBoard::Fill(int row, int col, int wid, int hgt)
             LftEdgeRandom(r, c, w, h);
             break;
         default:
-            ASSERT(false);
+            break;
+            //ASSERT(false);
         }
 //	}
 //	else
