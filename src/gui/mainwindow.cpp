@@ -168,44 +168,30 @@ CheckerBoard MainWindow::pickShape(int choice)
     switch (choice)
     {
     case 1:
-
         return CheckerBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
 
-        break;
-
     case 2:
-
         return TriangleBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
 
-        break;
-
     case 3:
-
         return EllipseBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
 
-        break;
 
     case 4:
-
         return BrokenSqr(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
-
-        break;
 
     case 5:
 
         return SquareWithHole(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt());
 
-        break;
     case 6:
-
         return Quadrilateral(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
-
-        break;
 
     default:
         qDebug() << "Must select a shape";
-
     }
+
+    return CheckerBoard();
 }
 
 // Logic for creating an image
