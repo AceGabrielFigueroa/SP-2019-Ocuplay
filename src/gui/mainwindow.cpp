@@ -215,7 +215,6 @@ void MainWindow::on_btn_save_img_clicked()
    // TODO: error check to see if line_box is an actually integer
    //
 
-   qDebug()<< ui->buttonGroup->checkedId();
    saveImage();
 }
 
@@ -321,9 +320,10 @@ void MainWindow::colorImage(int *array, int height, int width) {
                                                        tr("Images (*.bmp)"));
    image.save(fileName);
     */
-   displayImage(image);
 
-   //myImage = image;
+   //displayImage(image);
+
+   myImage = image;
 }
 
 // Notifies the user if the input is accepted or not
@@ -409,5 +409,5 @@ void MainWindow::on_btn_reset_clicked()
 void MainWindow::on_btn_create_img_clicked()
 {
     createImage();
-    //displayImage(myImage);
+    displayImage(myImage);
 }
