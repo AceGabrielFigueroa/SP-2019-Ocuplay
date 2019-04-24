@@ -2,6 +2,9 @@
 #include "ui_mainwindow.h"
 #include "CheckerBoard.h"
 #include "EllipseBoard.h"
+#include "BrokenSqr.h"
+#include "SquareWithHole.h"
+#include "Quadrilateral.h"
 #include <fstream>
 #include <QDebug>
 #include <QFileDialog>
@@ -13,14 +16,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+/*
     ui->buttonGroup->setId(ui->rb_rect, 0);
     ui->buttonGroup->setId(ui->rb_triangle, 1);
     ui->buttonGroup->setId(ui->rb_ellipse, 2);
     ui->buttonGroup->setId(ui->rb_brokensqr, 3);
     ui->buttonGroup->setId(ui->rb_sqr_w_hole, 4);
     ui->buttonGroup->setId(ui->rb_quad, 5);
-
+*/
     ui->comboBox->addItem("Select a shape");
     ui->comboBox->addItem("Rectangle");
     ui->comboBox->addItem("Triangle");
@@ -109,53 +112,130 @@ void MainWindow::createImage()
 {
    qDebug()<< ui->buttonGroup->checkedId();
 
-   int width=ui->Width->text().toInt();
-   int height=ui->Height->text().toInt();
+   myWidth = ui->Width->text().toInt();
+   myHeight = ui->Height->text().toInt();
+   fillRC();
 
-   CheckerBoard checker1 = CheckerBoard(width, height,
-                                        ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+   ui->le_c1->text().toInt();
+   ui->le_r1->text().toInt();
 
-   CheckerBoard checker2 = CheckerBoard(width, height,
-                                        ui->le_c2->text().toInt(), ui->le_r2->text().toInt(), true);
+   CheckerBoard checker0 = pickShape(convertTexttoInt(ui->comboBox->currentText()), 0);
 
-   CheckerBoard checker3 = CheckerBoard(width, height,
-                                        ui->le_c3->text().toInt(), ui->le_r3->text().toInt(), true);
+   CheckerBoard checker1 = pickShape(convertTexttoInt(ui->comboBox_2->currentText()), 1);
 
-   CheckerBoard checker4 = CheckerBoard(width, height,
-                                        ui->le_c4->text().toInt(), ui->le_r4->text().toInt(), true);
+   CheckerBoard checker2 = pickShape(convertTexttoInt(ui->comboBox_3->currentText()), 2);
 
-   CheckerBoard checker5 = CheckerBoard(width, height,
-                                        ui->le_c5->text().toInt(), ui->le_r5->text().toInt(), true);
+   CheckerBoard checker3 = pickShape(convertTexttoInt(ui->comboBox_4->currentText()), 3);
 
-   CheckerBoard checker6 = CheckerBoard(width, height,
-                                        ui->le_c6->text().toInt(), ui->le_r6->text().toInt(), true);
+   CheckerBoard checker4 = pickShape(convertTexttoInt(ui->comboBox_5->currentText()), 4);
 
-   CheckerBoard checker7 = CheckerBoard(width, height,
-                                        ui->le_c7->text().toInt(), ui->le_r7->text().toInt(), true);
+   CheckerBoard checker5 = pickShape(convertTexttoInt(ui->comboBox_6->currentText()), 5);
 
-   CheckerBoard checker8 = CheckerBoard(width, height,
-                                        ui->le_c8->text().toInt(), ui->le_r8->text().toInt(), true);
+   CheckerBoard checker6 = pickShape(convertTexttoInt(ui->comboBox_7->currentText()), 6);
 
-   int *result = new int[width * height];
+   CheckerBoard checker7 = pickShape(convertTexttoInt(ui->comboBox_8->currentText()), 7);
 
-   for(int i = 0; i < height; i++)
+   int *result = new int[myWidth * myHeight];
+
+   for(int i = 0; i < myHeight; i++)
    {
-       for(int j = 0; j < width; j++)
+       for(int j = 0; j < myWidth; j++)
        {
-           result[(i * height) + j] = (checker1.GetAt(i,j) ? 0x01 : 0x00) +
-                                      (checker2.GetAt(i,j) ? 0x02 : 0x00) +
-                                      (checker3.GetAt(i,j) ? 0x04 : 0x00) +
-                                      (checker4.GetAt(i,j) ? 0x08 : 0x00) +
-                                      (checker5.GetAt(i,j) ? 0x10 : 0x00) +
-                                      (checker6.GetAt(i,j) ? 0x20 : 0x00) +
-                                      (checker7.GetAt(i,j) ? 0x40 : 0x00) +
-                                      (checker8.GetAt(i,j) ? 0x80 : 0x00);
+           result[(i * myHeight) + j] = (checker0.GetAt(i,j) ? 0x01 : 0x00) +
+                                        (checker1.GetAt(i,j) ? 0x02 : 0x00) +
+                                        (checker2.GetAt(i,j) ? 0x04 : 0x00) +
+                                        (checker3.GetAt(i,j) ? 0x08 : 0x00) +
+                                        (checker4.GetAt(i,j) ? 0x10 : 0x00) +
+                                        (checker5.GetAt(i,j) ? 0x20 : 0x00) +
+                                        (checker6.GetAt(i,j) ? 0x40 : 0x00) +
+                                        (checker7.GetAt(i,j) ? 0x80 : 0x00);
 
        }
    }
 
-   colorImage(result, height, width);
+   colorImage(result, myHeight, myWidth);
 }
+
+void MainWindow::fillRC()
+{
+    int index = 0;
+    foreach(QLineEdit* le_c, findChildren<QLineEdit*>())
+    {
+          cols[index] = le_c->text().toInt();
+          index++;
+    }
+    index = 0;
+    foreach(QLineEdit* le_r, findChildren<QLineEdit*>())
+    {
+        rows[index] = le_r->text().toInt();
+        index++;
+    }
+}
+
+int MainWindow::convertTexttoInt(QString text) //selection is the text from ComboBoxSelections functions
+{
+   if (text == "Rectangle")
+
+       return 1;
+
+   else if (text == "Triangle")
+
+       return 2;
+
+   else if (text == "Ellipse")
+
+       return 3;
+
+   else if (text == "Broken Square")
+
+       return 4;
+
+   else if (text == "Square with Hole")
+
+       return 5;
+
+   else if (text == "Quadrilateral")
+
+       return 6;
+   return 0;
+}
+
+CheckerBoard MainWindow::pickShape(int choice, int boardNum)
+{
+    CheckerBoard board;
+    switch (choice)
+    {
+    case 1:
+        board = CheckerBoard(myWidth, myHeight, cols[boardNum], rows[boardNum], true);
+        break;
+
+    case 2:
+        board = CheckerBoard(myWidth, myHeight, cols[boardNum], rows[boardNum], true);
+        break;
+       //return TriangleBoard(myWidth, myHeight, ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+
+    case 3:
+        board = EllipseBoard(myWidth, myHeight, cols[boardNum], rows[boardNum], true);
+        break;
+
+    case 4:
+        board = BrokenSqr(myWidth, myHeight, cols[boardNum], rows[boardNum], true);
+        break;
+
+    case 5:
+        board = SquareWithHole(myWidth, myHeight, cols[boardNum], rows[boardNum], true);
+        break;
+
+   case 6:
+        board = Quadrilateral(myWidth, myHeight, cols[boardNum], rows[boardNum], true);
+        break;
+   default:
+        board =  CheckerBoard(myWidth, myHeight, cols[boardNum], rows[boardNum], true);
+
+   }
+   return board;
+}
+
 
 // This display an image onto the QLabel
 void MainWindow::displayImage(QImage img) {
@@ -276,7 +356,7 @@ void MainWindow::on_btn_random_clicked()
     QString s;
     foreach(QLineEdit* le, findChildren<QLineEdit*>())
     {
-        if(!((le->objectName() == "Width") || (le->objectName() == "Height")))
+        if(!((le->objectName() == "Width") || (le->objectName() == "Height") || (le->objectName() =="le_num_imgs")))
         {
           s = QString::number(int(qPow(2, rand() % 5 + 1)));
           le->setText(s);

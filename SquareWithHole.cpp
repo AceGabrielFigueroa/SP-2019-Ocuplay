@@ -14,8 +14,7 @@ SquareWithHole::~SquareWithHole()
 {
 }
 
-SquareWithHole::SquareWithHole(
-	int width, int height, int columns, int rows)
+SquareWithHole::SquareWithHole(int width, int height, int columns, int rows, bool m_random)
 {
 	Construct(width, height, columns, rows);
 	//Construct(width, height);

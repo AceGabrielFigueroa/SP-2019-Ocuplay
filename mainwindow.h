@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QLineEdit>
+#include "CheckerBoard.h"
 
 namespace Ui {
 class MainWindow;
@@ -49,9 +50,16 @@ private:
 
 
     QImage myImage;
+    int myWidth, myHeight;
+    int cols[8];
+    int rows[8];
     bool checkNum(int a, int b);
     void textChanged_notify(QLineEdit* q1, QLineEdit* q2, const QString &arg1);
 
+    void fillRC();
+    void comboBoxSelections();
+    int convertTexttoInt(QString text);
+    CheckerBoard pickShape(int choice, int boardNum);
     void createImage();
     void saveImage();
     void colorImage(int array[], int height, int width);

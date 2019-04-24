@@ -55,79 +55,6 @@
           <item>
            <layout class="QGridLayout" name="gridLayout_7">
             <item row="0" column="0">
-             <widget class="QGroupBox" name="gb_shape">
-              <property name="title">
-               <string>Shape</string>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_6">
-               <item row="0" column="0">
-                <layout class="QVBoxLayout" name="verticalLayout">
-                 <item>
-                  <widget class="QRadioButton" name="rb_rect">
-                   <property name="text">
-                    <string>Rectangle</string>
-                   </property>
-                   <attribute name="buttonGroup">
-                    <string notr="true">buttonGroup</string>
-                   </attribute>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QRadioButton" name="rb_triangle">
-                   <property name="text">
-                    <string>Triangle</string>
-                   </property>
-                   <attribute name="buttonGroup">
-                    <string notr="true">buttonGroup</string>
-                   </attribute>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QRadioButton" name="rb_ellipse">
-                   <property name="text">
-                    <string>Ellipse</string>
-                   </property>
-                   <attribute name="buttonGroup">
-                    <string notr="true">buttonGroup</string>
-                   </attribute>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QRadioButton" name="rb_brokensqr">
-                   <property name="text">
-                    <string>Broken Square</string>
-                   </property>
-                   <attribute name="buttonGroup">
-                    <string notr="true">buttonGroup</string>
-                   </attribute>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QRadioButton" name="rb_sqr_w_hole">
-                   <property name="text">
-                    <string>Square with Hole</string>
-                   </property>
-                   <attribute name="buttonGroup">
-                    <string notr="true">buttonGroup</string>
-                   </attribute>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QRadioButton" name="rb_quad">
-                   <property name="text">
-                    <string>Quadrilateral</string>
-                   </property>
-                   <attribute name="buttonGroup">
-                    <string notr="true">buttonGroup</string>
-                   </attribute>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="0" column="1">
              <layout class="QVBoxLayout" name="verticalLayout_2">
               <item>
                <widget class="QPushButton" name="btn_get_clr">
@@ -451,22 +378,6 @@
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>33</width>
-                     <height>17</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item row="0" column="4">
-                  <spacer name="sp_config_r">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeType">
-                    <enum>QSizePolicy::Preferred</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>22</width>
                      <height>17</height>
                     </size>
                    </property>
@@ -812,6 +723,13 @@
                  </item>
                  <item row="8" column="4">
                   <widget class="QComboBox" name="comboBox_8"/>
+                 </item>
+                 <item row="0" column="4">
+                  <widget class="QLabel" name="label">
+                   <property name="text">
+                    <string> Shape</string>
+                   </property>
+                  </widget>
                  </item>
                 </layout>
                </item>
