@@ -209,28 +209,28 @@ void MainWindow::createImage()
    int width=ui->Width->text().toInt();
    int height=ui->Height->text().toInt();
 
-   CheckerBoard checker1 = CheckerBoard(width, height,
+   BooleanBitmap* checker1 = new TriangleBoard(width, height,
                                         ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
 
-   CheckerBoard checker2 = CheckerBoard(width, height,
+   EllipseBoard checker2 = EllipseBoard(width, height,
                                         ui->le_c2->text().toInt(), ui->le_r2->text().toInt(), true);
 
-   CheckerBoard checker3 = CheckerBoard(width, height,
+   EllipseBoard checker3 = EllipseBoard(width, height,
                                         ui->le_c3->text().toInt(), ui->le_r3->text().toInt(), true);
 
-   CheckerBoard checker4 = CheckerBoard(width, height,
+   EllipseBoard checker4 = EllipseBoard(width, height,
                                         ui->le_c4->text().toInt(), ui->le_r4->text().toInt(), true);
 
-   CheckerBoard checker5 = CheckerBoard(width, height,
+   EllipseBoard checker5 = EllipseBoard(width, height,
                                         ui->le_c5->text().toInt(), ui->le_r5->text().toInt(), true);
 
-   CheckerBoard checker6 = CheckerBoard(width, height,
+   EllipseBoard checker6 = EllipseBoard(width, height,
                                         ui->le_c6->text().toInt(), ui->le_r6->text().toInt(), true);
 
-   CheckerBoard checker7 = CheckerBoard(width, height,
+   EllipseBoard checker7 = EllipseBoard(width, height,
                                         ui->le_c7->text().toInt(), ui->le_r7->text().toInt(), true);
 
-   CheckerBoard checker8 = CheckerBoard(width, height,
+   EllipseBoard checker8 = EllipseBoard(width, height,
                                         ui->le_c8->text().toInt(), ui->le_r8->text().toInt(), true);
 
    int *result = new int[width * height];
@@ -239,7 +239,7 @@ void MainWindow::createImage()
    {
        for(int j = 0; j < width; j++)
        {
-           result[(i * height) + j] = (checker1.GetAt(i,j) ? 0x01 : 0x00) +
+           result[(i * height) + j] = (checker1->GetAt(i,j) ? 0x01 : 0x00) +
                                       (checker2.GetAt(i,j) ? 0x02 : 0x00) +
                                       (checker3.GetAt(i,j) ? 0x04 : 0x00) +
                                       (checker4.GetAt(i,j) ? 0x08 : 0x00) +
