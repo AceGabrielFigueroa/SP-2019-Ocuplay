@@ -53,6 +53,7 @@ private:
     int myWidth, myHeight;
     int cols[8];
     int rows[8];
+    CheckerBoard boards[8];
     bool checkNum(int a, int b);
     void textChanged_notify(QLineEdit* q1, QLineEdit* q2, const QString &arg1);
 

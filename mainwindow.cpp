@@ -16,80 +16,20 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-/*
-    ui->buttonGroup->setId(ui->rb_rect, 0);
-    ui->buttonGroup->setId(ui->rb_triangle, 1);
-    ui->buttonGroup->setId(ui->rb_ellipse, 2);
-    ui->buttonGroup->setId(ui->rb_brokensqr, 3);
-    ui->buttonGroup->setId(ui->rb_sqr_w_hole, 4);
-    ui->buttonGroup->setId(ui->rb_quad, 5);
-*/
-    ui->comboBox->addItem("Select a shape");
-    ui->comboBox->addItem("Rectangle");
-    ui->comboBox->addItem("Triangle");
-    ui->comboBox->addItem("Ellipse");
-    ui->comboBox->addItem("Broken Square");
-    ui->comboBox->addItem("Square with Hole");
-    ui->comboBox->addItem("Quadrilateral");
 
-    ui->comboBox_2->addItem("Select a shape");
-    ui->comboBox_2->addItem("Rectangle");
-    ui->comboBox_2->addItem("Triangle");
-    ui->comboBox_2->addItem("Ellipse");
-    ui->comboBox_2->addItem("Broken Square");
-    ui->comboBox_2->addItem("Square with Hole");
-    ui->comboBox_2->addItem("Quadrilateral");
+    foreach (QComboBox *comboBox, findChildren<QComboBox*>())
+    {
+        comboBox->addItem("Select a shape");
+        comboBox->addItem("Rectangle");
+        comboBox->addItem("Triangle");
+        comboBox->addItem("Ellipse");
+        comboBox->addItem("Broken Square");
+        comboBox->addItem("Square with Hole");
+        comboBox->addItem("Quadrilateral");
+    }
 
-    ui->comboBox_3->addItem("Select a shape");
-    ui->comboBox_3->addItem("Rectangle");
-    ui->comboBox_3->addItem("Triangle");
-    ui->comboBox_3->addItem("Ellipse");
-    ui->comboBox_3->addItem("Broken Square");
-    ui->comboBox_3->addItem("Square with Hole");
-    ui->comboBox_3->addItem("Quadrilateral");
-
-    ui->comboBox_4->addItem("Select a shape");
-    ui->comboBox_4->addItem("Rectangle");
-    ui->comboBox_4->addItem("Triangle");
-    ui->comboBox_4->addItem("Ellipse");
-    ui->comboBox_4->addItem("Broken Square");
-    ui->comboBox_4->addItem("Square with Hole");
-    ui->comboBox_4->addItem("Quadrilateral");
-
-    ui->comboBox_5->addItem("Select a shape");
-    ui->comboBox_5->addItem("Rectangle");
-    ui->comboBox_5->addItem("Triangle");
-    ui->comboBox_5->addItem("Ellipse");
-    ui->comboBox_5->addItem("Broken Square");
-    ui->comboBox_5->addItem("Square with Hole");
-    ui->comboBox_5->addItem("Quadrilateral");
-
-    ui->comboBox_6->addItem("Select a shape");
-    ui->comboBox_6->addItem("Rectangle");
-    ui->comboBox_6->addItem("Triangle");
-    ui->comboBox_6->addItem("Ellipse");
-    ui->comboBox_6->addItem("Broken Square");
-    ui->comboBox_6->addItem("Square with Hole");
-    ui->comboBox_6->addItem("Quadrilateral");
-
-    ui->comboBox_7->addItem("Select a shape");
-    ui->comboBox_7->addItem("Rectangle");
-    ui->comboBox_7->addItem("Triangle");
-    ui->comboBox_7->addItem("Ellipse");
-    ui->comboBox_7->addItem("Broken Square");
-    ui->comboBox_7->addItem("Square with Hole");
-    ui->comboBox_7->addItem("Quadrilateral");
-
-    ui->comboBox_8->addItem("Select a shape");
-    ui->comboBox_8->addItem("Rectangle");
-    ui->comboBox_8->addItem("Triangle");
-    ui->comboBox_8->addItem("Ellipse");
-    ui->comboBox_8->addItem("Broken Square");
-    ui->comboBox_8->addItem("Square with Hole");
-    ui->comboBox_8->addItem("Quadrilateral");
-
-    //ui->le_img_h->setObjectName("height");
-    //ui->le_img_wd->setObjectName("width");
+    myWidth = 0;
+    myHeight = 0;
 
 }
 
@@ -108,32 +48,29 @@ void MainWindow::on_btn_save_img_clicked()
    saveImage();
 }
 
+//creates and displays image
+void MainWindow::on_btn_create_img_clicked()
+{
+    createImage();
+    displayImage(myImage);
+}
+
+//takes in input and generates image
 void MainWindow::createImage()
 {
    qDebug()<< ui->buttonGroup->checkedId();
 
+   //Sets global variables
    myWidth = ui->Width->text().toInt();
    myHeight = ui->Height->text().toInt();
-   fillRC();
 
-   ui->le_c1->text().toInt();
-   ui->le_r1->text().toInt();
+   fillRC(); //fills row and columns arrays with user input
 
-   CheckerBoard checker0 = pickShape(convertTexttoInt(ui->comboBox->currentText()), 0);
-
-   CheckerBoard checker1 = pickShape(convertTexttoInt(ui->comboBox_2->currentText()), 1);
-
-   CheckerBoard checker2 = pickShape(convertTexttoInt(ui->comboBox_3->currentText()), 2);
-
-   CheckerBoard checker3 = pickShape(convertTexttoInt(ui->comboBox_4->currentText()), 3);
-
-   CheckerBoard checker4 = pickShape(convertTexttoInt(ui->comboBox_5->currentText()), 4);
-
-   CheckerBoard checker5 = pickShape(convertTexttoInt(ui->comboBox_6->currentText()), 5);
-
-   CheckerBoard checker6 = pickShape(convertTexttoInt(ui->comboBox_7->currentText()), 6);
-
-   CheckerBoard checker7 = pickShape(convertTexttoInt(ui->comboBox_8->currentText()), 7);
+   int index = 0;
+   foreach (QComboBox *comboBox, findChildren<QComboBox*>())
+   {
+       boards[index] = pickShape(convertTexttoInt(comboBox->currentText()), index);
+   }
 
    int *result = new int[myWidth * myHeight];
 
@@ -141,14 +78,14 @@ void MainWindow::createImage()
    {
        for(int j = 0; j < myWidth; j++)
        {
-           result[(i * myHeight) + j] = (checker0.GetAt(i,j) ? 0x01 : 0x00) +
-                                        (checker1.GetAt(i,j) ? 0x02 : 0x00) +
-                                        (checker2.GetAt(i,j) ? 0x04 : 0x00) +
-                                        (checker3.GetAt(i,j) ? 0x08 : 0x00) +
-                                        (checker4.GetAt(i,j) ? 0x10 : 0x00) +
-                                        (checker5.GetAt(i,j) ? 0x20 : 0x00) +
-                                        (checker6.GetAt(i,j) ? 0x40 : 0x00) +
-                                        (checker7.GetAt(i,j) ? 0x80 : 0x00);
+           result[(i * myHeight) + j] = (boards[0].GetAt(i,j) ? 0x01 : 0x00) +
+                                        (boards[1].GetAt(i,j) ? 0x02 : 0x00) +
+                                        (boards[2].GetAt(i,j) ? 0x04 : 0x00) +
+                                        (boards[3].GetAt(i,j) ? 0x08 : 0x00) +
+                                        (boards[4].GetAt(i,j) ? 0x10 : 0x00) +
+                                        (boards[5].GetAt(i,j) ? 0x20 : 0x00) +
+                                        (boards[6].GetAt(i,j) ? 0x40 : 0x00) +
+                                        (boards[7].GetAt(i,j) ? 0x80 : 0x00);
 
        }
    }
@@ -156,13 +93,14 @@ void MainWindow::createImage()
    colorImage(result, myHeight, myWidth);
 }
 
+//fills rows and columns arrays with user input
 void MainWindow::fillRC()
 {
     int index = 0;
     foreach(QLineEdit* le_c, findChildren<QLineEdit*>())
     {
-          cols[index] = le_c->text().toInt();
-          index++;
+        cols[index] = le_c->text().toInt();
+        index++;
     }
     index = 0;
     foreach(QLineEdit* le_r, findChildren<QLineEdit*>())
@@ -172,6 +110,7 @@ void MainWindow::fillRC()
     }
 }
 
+//Turns the shape input into a case
 int MainWindow::convertTexttoInt(QString text) //selection is the text from ComboBoxSelections functions
 {
    if (text == "Rectangle")
@@ -200,6 +139,7 @@ int MainWindow::convertTexttoInt(QString text) //selection is the text from Comb
    return 0;
 }
 
+//creates shape based on case
 CheckerBoard MainWindow::pickShape(int choice, int boardNum)
 {
     CheckerBoard board;
@@ -245,6 +185,7 @@ void MainWindow::displayImage(QImage img) {
                                                              Qt::SmoothTransformation));
 }
 
+//Saves the image as a bmp
 void MainWindow::saveImage()
 {
    QString fileName = QFileDialog::getSaveFileName(this, tr("Save Image File"),
@@ -258,6 +199,7 @@ void MainWindow::saveImage()
 
 // This creates an image in memory. Can save if wanted.
 
+//uses the colortable to color the image
 void MainWindow::colorImage(int *array, int height, int width) {
 
    std::ifstream _COLOR_TABLE_FILE("C:/Users/erics/Desktop/Projects/QTbuild/SP-2019-Ocuplay/resources/color.txt");
@@ -350,7 +292,7 @@ bool MainWindow::checkNum(int a, int b) {
    }
 }
 
-//make string array
+//Sets input text boxes to random powers of 2 up to 32
 void MainWindow::on_btn_random_clicked()
 {
     QString s;
@@ -366,16 +308,11 @@ void MainWindow::on_btn_random_clicked()
     }
 }
 
+//clears all text boxes
 void MainWindow::on_btn_reset_clicked()
 {
     foreach(QLineEdit* le, findChildren<QLineEdit*>())
     {
         le->clear();
     }
-}
-
-void MainWindow::on_btn_create_img_clicked()
-{
-    createImage();
-    displayImage(myImage);
 }
