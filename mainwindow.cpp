@@ -176,30 +176,7 @@ CheckerBoard MainWindow::pickShape(int choice, int boardNum)
    return board;
 }
 
-
-// This display an image onto the QLabel
-void MainWindow::displayImage(QImage img) {
-   ui->lbl_display->setPixmap(QPixmap::fromImage(img).scaled(ui->lbl_display->width(),
-                                                             ui->lbl_display->height(),
-                                                             Qt::KeepAspectRatio,
-                                                             Qt::SmoothTransformation));
-}
-
-//Saves the image as a bmp
-void MainWindow::saveImage()
-{
-   QString fileName = QFileDialog::getSaveFileName(this, tr("Save Image File"),
-                                                       QString(),
-                                                       tr("Images (*.bmp)"));
-   myImage.save(fileName);
-
-
-   //displayImage(image);
-}
-
-// This creates an image in memory. Can save if wanted.
-
-//uses the colortable to color the image
+//uses the colortable to color the image and sets it to global image
 void MainWindow::colorImage(int *array, int height, int width) {
 
    std::ifstream _COLOR_TABLE_FILE("C:/Users/erics/Desktop/Projects/QTbuild/SP-2019-Ocuplay/resources/color.txt");
@@ -234,6 +211,26 @@ void MainWindow::colorImage(int *array, int height, int width) {
    displayImage(image);
 */
    myImage = image;
+}
+
+// This display an image onto the QLabel
+void MainWindow::displayImage(QImage img) {
+   ui->lbl_display->setPixmap(QPixmap::fromImage(img).scaled(ui->lbl_display->width(),
+                                                             ui->lbl_display->height(),
+                                                             Qt::KeepAspectRatio,
+                                                             Qt::SmoothTransformation));
+}
+
+//Saves the image as a bmp
+void MainWindow::saveImage()
+{
+   QString fileName = QFileDialog::getSaveFileName(this, tr("Save Image File"),
+                                                       QString(),
+                                                       tr("Images (*.bmp)"));
+   myImage.save(fileName);
+
+
+   //displayImage(image);
 }
 
 // Notifies the user if the input is accepted or not
