@@ -38,43 +38,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::comboBoxSelections()
-{
-    QString text;
-
-    text = ui->comboBox->currentText();
-
-    convertTexttoInt(text);
-
-    text = ui->comboBox_2->currentText();
-
-    convertTexttoInt(text);
-
-    text = ui->comboBox_3->currentText();
-
-    convertTexttoInt(text);
-
-    text = ui->comboBox_4->currentText();
-
-    convertTexttoInt(text);
-
-    text = ui->comboBox_5->currentText();
-
-    convertTexttoInt(text);
-
-    text = ui->comboBox_6->currentText();
-
-    convertTexttoInt(text);
-
-    text = ui->comboBox_7->currentText();
-
-    convertTexttoInt(text);
-
-    text = ui->comboBox_8->currentText();
-
-    convertTexttoInt(text);
-}
-
 int MainWindow::convertTexttoInt(QString text) //selection is the text from ComboBoxSelections functions
 {
     if (text == "Rectangle")
@@ -105,35 +68,35 @@ int MainWindow::convertTexttoInt(QString text) //selection is the text from Comb
 
 BooleanBitmap* MainWindow::pickShape(int choice, int rowNum)
 {
-    int col = cols[rowNum];
-    int row = cols[rowNum];
+    int width = ui->Width->text().toInt();
+    int height = ui->Height->text().toInt();
     switch (choice)
     {
     case 1:
-        return new CheckerBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), cols[rowNum] , rows[rowNum], true);
+        return new CheckerBoard(width, height, cols[rowNum] , rows[rowNum], true);
 
     case 2:
-        return new TriangleBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), cols[rowNum], rows[rowNum], true);
+        return new TriangleBoard(width, height, cols[rowNum], rows[rowNum], true);
 
     case 3:
-        return new EllipseBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), cols[rowNum], rows[rowNum], true);
+        return new EllipseBoard(width, height, cols[rowNum], rows[rowNum], true);
 
 
     case 4:
-        return new BrokenSqr(ui->Width->text().toInt(), ui->Height->text().toInt(), cols[rowNum], rows[rowNum], true);
+        return new BrokenSqr(width, height, cols[rowNum], rows[rowNum], true);
 
     case 5:
 
-        return new SquareWithHole(ui->Width->text().toInt(), ui->Height->text().toInt(), cols[rowNum], rows[rowNum], true);
+        return new SquareWithHole(width, height, cols[rowNum], rows[rowNum], true);
 
     case 6:
-        return new Quadrilateral(ui->Width->text().toInt(), ui->Height->text().toInt(), cols[rowNum], rows[rowNum], true);
+        return new Quadrilateral(width, height, cols[rowNum], rows[rowNum], true);
 
     default:
         qDebug() << "Must select a shape";
     }
 
-    return new CheckerBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), cols[rowNum], rows[rowNum], true);
+    return new CheckerBoard(width, height, cols[rowNum], rows[rowNum], true);
 }
 
 void MainWindow::createImage()
@@ -142,36 +105,27 @@ void MainWindow::createImage()
    int height=ui->Height->text().toInt();
    fillRC();
 
-   BooleanBitmap* checker1 = pickShape(convertTexttoInt(ui->comboBox->currentText()), 0);
+   int index = 0;
+      foreach (QComboBox *comboBox, findChildren<QComboBox*>())
+      {
+          boards[index] = pickShape(convertTexttoInt(comboBox->currentText()), index);
+          index++;
+      }
 
-   BooleanBitmap* checker2 = pickShape(convertTexttoInt(ui->comboBox_2->currentText()), 1);
+      int *result = new int[width * height];
 
-   BooleanBitmap* checker3 = pickShape(convertTexttoInt(ui->comboBox_3->currentText()), 2);
-
-   BooleanBitmap* checker4 = pickShape(convertTexttoInt(ui->comboBox_4->currentText()), 3);
-
-   BooleanBitmap* checker5 = pickShape(convertTexttoInt(ui->comboBox_5->currentText()), 4);
-
-   BooleanBitmap* checker6 = pickShape(convertTexttoInt(ui->comboBox_6->currentText()), 5);
-
-   BooleanBitmap* checker7 = pickShape(convertTexttoInt(ui->comboBox_7->currentText()), 6);
-
-   BooleanBitmap* checker8 = pickShape(convertTexttoInt(ui->comboBox_8->currentText()), 7);
-
-   int *result = new int[width * height];
-
-   for(int i = 0; i < height; i++)
-   {
-       for(int j = 0; j < width; j++)
-       {
-           result[(i * height) + j] = (checker1->GetAt(i,j) ? 0x01 : 0x00) +
-                                      (checker2->GetAt(i,j) ? 0x02 : 0x00) +
-                                      (checker3->GetAt(i,j) ? 0x04 : 0x00) +
-                                      (checker4->GetAt(i,j) ? 0x08 : 0x00) +
-                                      (checker5->GetAt(i,j) ? 0x10 : 0x00) +
-                                      (checker6->GetAt(i,j) ? 0x20 : 0x00) +
-                                      (checker7->GetAt(i,j) ? 0x40 : 0x00) +
-                                      (checker8->GetAt(i,j) ? 0x80 : 0x00);
+      for(int i = 0; i < height; i++)
+      {
+          for(int j = 0; j < width; j++)
+          {
+              result[(i * height) + j] = (boards[0]->GetAt(i,j) ? 0x01 : 0x00) +
+                                           (boards[1]->GetAt(i,j) ? 0x02 : 0x00) +
+                                           (boards[2]->GetAt(i,j) ? 0x04 : 0x00) +
+                                           (boards[3]->GetAt(i,j) ? 0x08 : 0x00) +
+                                           (boards[4]->GetAt(i,j) ? 0x10 : 0x00) +
+                                           (boards[5]->GetAt(i,j) ? 0x20 : 0x00) +
+                                           (boards[6]->GetAt(i,j) ? 0x40 : 0x00) +
+                                           (boards[7]->GetAt(i,j) ? 0x80 : 0x00);
 
        }
    }
@@ -324,7 +278,7 @@ void MainWindow::on_btn_random_clicked()
           s = QString::number(int(qPow(2, rand() % 5 + 1)));
           le->setText(s);
 
-          qDebug() << le->accessibleName() ;
+          //qDebug() << le->accessibleName() ;
         }
     }
 }

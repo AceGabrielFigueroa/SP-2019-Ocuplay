@@ -48,7 +48,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    void comboBoxSelections();
     int convertTexttoInt(QString);
     BooleanBitmap* pickShape(int a, int b);
 
@@ -62,6 +61,7 @@ private:
     void displayImage(QImage img);
 
     int rows[8], cols[8];
+    BooleanBitmap* boards[8];
     QImage myImage;
 };
 
