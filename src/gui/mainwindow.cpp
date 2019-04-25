@@ -18,77 +18,16 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->buttonGroup->setId(ui->rb_rect, 0);
-    ui->buttonGroup->setId(ui->rb_triangle, 1);
-    ui->buttonGroup->setId(ui->rb_ellipse, 2);
-    ui->buttonGroup->setId(ui->rb_brokensqr, 3);
-    ui->buttonGroup->setId(ui->rb_sqr_w_hole, 4);
-    ui->buttonGroup->setId(ui->rb_quad, 5);
-
-    ui->comboBox->addItem("Select a shape");
-    ui->comboBox->addItem("Rectangle");
-    ui->comboBox->addItem("Triangle");
-    ui->comboBox->addItem("Ellipse");
-    ui->comboBox->addItem("Broken Square");
-    ui->comboBox->addItem("Square with Hole");
-    ui->comboBox->addItem("Quadrilateral");
-
-    ui->comboBox_2->addItem("Select a shape");
-    ui->comboBox_2->addItem("Rectangle");
-    ui->comboBox_2->addItem("Triangle");
-    ui->comboBox_2->addItem("Ellipse");
-    ui->comboBox_2->addItem("Broken Square");
-    ui->comboBox_2->addItem("Square with Hole");
-    ui->comboBox_2->addItem("Quadrilateral");
-
-    ui->comboBox_3->addItem("Select a shape");
-    ui->comboBox_3->addItem("Rectangle");
-    ui->comboBox_3->addItem("Triangle");
-    ui->comboBox_3->addItem("Ellipse");
-    ui->comboBox_3->addItem("Broken Square");
-    ui->comboBox_3->addItem("Square with Hole");
-    ui->comboBox_3->addItem("Quadrilateral");
-
-    ui->comboBox_4->addItem("Select a shape");
-    ui->comboBox_4->addItem("Rectangle");
-    ui->comboBox_4->addItem("Triangle");
-    ui->comboBox_4->addItem("Ellipse");
-    ui->comboBox_4->addItem("Broken Square");
-    ui->comboBox_4->addItem("Square with Hole");
-    ui->comboBox_4->addItem("Quadrilateral");
-
-    ui->comboBox_5->addItem("Select a shape");
-    ui->comboBox_5->addItem("Rectangle");
-    ui->comboBox_5->addItem("Triangle");
-    ui->comboBox_5->addItem("Ellipse");
-    ui->comboBox_5->addItem("Broken Square");
-    ui->comboBox_5->addItem("Square with Hole");
-    ui->comboBox_5->addItem("Quadrilateral");
-
-    ui->comboBox_6->addItem("Select a shape");
-    ui->comboBox_6->addItem("Rectangle");
-    ui->comboBox_6->addItem("Triangle");
-    ui->comboBox_6->addItem("Ellipse");
-    ui->comboBox_6->addItem("Broken Square");
-    ui->comboBox_6->addItem("Square with Hole");
-    ui->comboBox_6->addItem("Quadrilateral");
-
-    ui->comboBox_7->addItem("Select a shape");
-    ui->comboBox_7->addItem("Rectangle");
-    ui->comboBox_7->addItem("Triangle");
-    ui->comboBox_7->addItem("Ellipse");
-    ui->comboBox_7->addItem("Broken Square");
-    ui->comboBox_7->addItem("Square with Hole");
-    ui->comboBox_7->addItem("Quadrilateral");
-
-    ui->comboBox_8->addItem("Select a shape");
-    ui->comboBox_8->addItem("Rectangle");
-    ui->comboBox_8->addItem("Triangle");
-    ui->comboBox_8->addItem("Ellipse");
-    ui->comboBox_8->addItem("Broken Square");
-    ui->comboBox_8->addItem("Square with Hole");
-    ui->comboBox_8->addItem("Quadrilateral");
-
+    foreach (QComboBox *comboBox, findChildren<QComboBox*>())
+    {
+        comboBox->addItem("Select a shape");
+        comboBox->addItem("Rectangle");
+        comboBox->addItem("Triangle");
+        comboBox->addItem("Ellipse");
+        comboBox->addItem("Broken Square");
+        comboBox->addItem("Square with Hole");
+        comboBox->addItem("Quadrilateral");
+    }
     //ui->le_img_h->setObjectName("height");
     //ui->le_img_wd->setObjectName("width");
 
@@ -99,44 +38,44 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::ComboBoxSelections()
+void MainWindow::comboBoxSelections()
 {
     QString text;
 
     text = ui->comboBox->currentText();
 
-    ConvertTexttoInt(text);
+    convertTexttoInt(text);
 
     text = ui->comboBox_2->currentText();
 
-    ConvertTexttoInt(text);
+    convertTexttoInt(text);
 
     text = ui->comboBox_3->currentText();
 
-    ConvertTexttoInt(text);
+    convertTexttoInt(text);
 
     text = ui->comboBox_4->currentText();
 
-    ConvertTexttoInt(text);
+    convertTexttoInt(text);
 
     text = ui->comboBox_5->currentText();
 
-    ConvertTexttoInt(text);
+    convertTexttoInt(text);
 
     text = ui->comboBox_6->currentText();
 
-    ConvertTexttoInt(text);
+    convertTexttoInt(text);
 
     text = ui->comboBox_7->currentText();
 
-    ConvertTexttoInt(text);
+    convertTexttoInt(text);
 
     text = ui->comboBox_8->currentText();
 
-    ConvertTexttoInt(text);
+    convertTexttoInt(text);
 }
 
-int MainWindow::ConvertTexttoInt(QString text) //selection is the text from ComboBoxSelections functions
+int MainWindow::convertTexttoInt(QString text) //selection is the text from ComboBoxSelections functions
 {
     if (text == "Rectangle")
 
@@ -161,37 +100,38 @@ int MainWindow::ConvertTexttoInt(QString text) //selection is the text from Comb
     else if (text == "Quadrilateral")
 
         return 6;
+    return 0;
 }
 
-CheckerBoard MainWindow::pickShape(int choice)
+BooleanBitmap* MainWindow::pickShape(int choice)
 {
     switch (choice)
     {
     case 1:
-        return CheckerBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+        return new CheckerBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
 
     case 2:
-        return TriangleBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+        return new TriangleBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
 
     case 3:
-        return EllipseBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+        return new EllipseBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
 
 
     case 4:
-        return BrokenSqr(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+        return new BrokenSqr(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
 
     case 5:
 
-        return SquareWithHole(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt());
+        return new SquareWithHole(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt());
 
     case 6:
-        return Quadrilateral(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+        return new Quadrilateral(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
 
     default:
         qDebug() << "Must select a shape";
     }
 
-    return CheckerBoard();
+    return new CheckerBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
 }
 
 // Logic for creating an image
@@ -209,29 +149,21 @@ void MainWindow::createImage()
    int width=ui->Width->text().toInt();
    int height=ui->Height->text().toInt();
 
-   BooleanBitmap* checker1 = new TriangleBoard(width, height,
-                                        ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+   BooleanBitmap* checker1 = pickShape(convertTexttoInt(ui->comboBox->currentText()));
 
-   EllipseBoard checker2 = EllipseBoard(width, height,
-                                        ui->le_c2->text().toInt(), ui->le_r2->text().toInt(), true);
+   BooleanBitmap* checker2 = pickShape(convertTexttoInt(ui->comboBox_2->currentText()));
 
-   EllipseBoard checker3 = EllipseBoard(width, height,
-                                        ui->le_c3->text().toInt(), ui->le_r3->text().toInt(), true);
+   BooleanBitmap* checker3 = pickShape(convertTexttoInt(ui->comboBox_3->currentText()));
 
-   EllipseBoard checker4 = EllipseBoard(width, height,
-                                        ui->le_c4->text().toInt(), ui->le_r4->text().toInt(), true);
+   BooleanBitmap* checker4 = pickShape(convertTexttoInt(ui->comboBox_4->currentText()));
 
-   EllipseBoard checker5 = EllipseBoard(width, height,
-                                        ui->le_c5->text().toInt(), ui->le_r5->text().toInt(), true);
+   BooleanBitmap* checker5 = pickShape(convertTexttoInt(ui->comboBox_5->currentText()));
 
-   EllipseBoard checker6 = EllipseBoard(width, height,
-                                        ui->le_c6->text().toInt(), ui->le_r6->text().toInt(), true);
+   BooleanBitmap* checker6 = pickShape(convertTexttoInt(ui->comboBox_6->currentText()));
 
-   EllipseBoard checker7 = EllipseBoard(width, height,
-                                        ui->le_c7->text().toInt(), ui->le_r7->text().toInt(), true);
+   BooleanBitmap* checker7 = pickShape(convertTexttoInt(ui->comboBox_7->currentText()));
 
-   EllipseBoard checker8 = EllipseBoard(width, height,
-                                        ui->le_c8->text().toInt(), ui->le_r8->text().toInt(), true);
+   BooleanBitmap* checker8 = pickShape(convertTexttoInt(ui->comboBox_8->currentText()));
 
    int *result = new int[width * height];
 
@@ -240,13 +172,13 @@ void MainWindow::createImage()
        for(int j = 0; j < width; j++)
        {
            result[(i * height) + j] = (checker1->GetAt(i,j) ? 0x01 : 0x00) +
-                                      (checker2.GetAt(i,j) ? 0x02 : 0x00) +
-                                      (checker3.GetAt(i,j) ? 0x04 : 0x00) +
-                                      (checker4.GetAt(i,j) ? 0x08 : 0x00) +
-                                      (checker5.GetAt(i,j) ? 0x10 : 0x00) +
-                                      (checker6.GetAt(i,j) ? 0x20 : 0x00) +
-                                      (checker7.GetAt(i,j) ? 0x40 : 0x00) +
-                                      (checker8.GetAt(i,j) ? 0x80 : 0x00);
+                                      (checker2->GetAt(i,j) ? 0x02 : 0x00) +
+                                      (checker3->GetAt(i,j) ? 0x04 : 0x00) +
+                                      (checker4->GetAt(i,j) ? 0x08 : 0x00) +
+                                      (checker5->GetAt(i,j) ? 0x10 : 0x00) +
+                                      (checker6->GetAt(i,j) ? 0x20 : 0x00) +
+                                      (checker7->GetAt(i,j) ? 0x40 : 0x00) +
+                                      (checker8->GetAt(i,j) ? 0x80 : 0x00);
 
        }
    }
@@ -277,7 +209,7 @@ void MainWindow::saveImage()
 
 void MainWindow::colorImage(int *array, int height, int width) {
 
-   std::ifstream _COLOR_TABLE_FILE("C:/Users/acegf/Documents/QT/Visual/res/color.txt");
+   std::ifstream _COLOR_TABLE_FILE("C:/Users/erics/Desktop/Projects/QTbuild/SP-2019-Ocuplay/res/color.txt");
 
    QColor _COLOR_TABLE[256];
    QImage image = QImage(width, height, QImage::Format_RGB888);

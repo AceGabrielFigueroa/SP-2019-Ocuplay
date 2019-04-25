@@ -48,9 +48,9 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    void ComboBoxSelections();
-    int ConvertTexttoInt(QString);
-    CheckerBoard pickShape(int);
+    void comboBoxSelections();
+    int convertTexttoInt(QString);
+    BooleanBitmap* pickShape(int);
 
     bool checkNum(int a, int b);
     void textChanged_notify(QLineEdit* q1, QLineEdit* q2, const QString &arg1);
