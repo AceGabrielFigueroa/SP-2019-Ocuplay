@@ -103,67 +103,60 @@ int MainWindow::convertTexttoInt(QString text) //selection is the text from Comb
     return 0;
 }
 
-BooleanBitmap* MainWindow::pickShape(int choice)
+BooleanBitmap* MainWindow::pickShape(int choice, int rowNum)
 {
+    int col = cols[rowNum];
+    int row = cols[rowNum];
     switch (choice)
     {
     case 1:
-        return new CheckerBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+        return new CheckerBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), cols[rowNum] , rows[rowNum], true);
 
     case 2:
-        return new TriangleBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+        return new TriangleBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), cols[rowNum], rows[rowNum], true);
 
     case 3:
-        return new EllipseBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+        return new EllipseBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), cols[rowNum], rows[rowNum], true);
 
 
     case 4:
-        return new BrokenSqr(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+        return new BrokenSqr(ui->Width->text().toInt(), ui->Height->text().toInt(), cols[rowNum], rows[rowNum], true);
 
     case 5:
 
-        return new SquareWithHole(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt());
+        return new SquareWithHole(ui->Width->text().toInt(), ui->Height->text().toInt(), cols[rowNum], rows[rowNum], true);
 
     case 6:
-        return new Quadrilateral(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
+        return new Quadrilateral(ui->Width->text().toInt(), ui->Height->text().toInt(), cols[rowNum], rows[rowNum], true);
 
     default:
         qDebug() << "Must select a shape";
     }
 
-    return new CheckerBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), ui->le_c1->text().toInt(), ui->le_r1->text().toInt(), true);
-}
-
-// Logic for creating an image
-void MainWindow::on_btn_save_img_clicked()
-{
-
-   // TODO: error check to see if line_box is an actually integer
-   //
-
-   saveImage();
+    return new CheckerBoard(ui->Width->text().toInt(), ui->Height->text().toInt(), cols[rowNum], rows[rowNum], true);
 }
 
 void MainWindow::createImage()
 {
    int width=ui->Width->text().toInt();
    int height=ui->Height->text().toInt();
+   fillRC();
 
-   BooleanBitmap* checker1 = pickShape(convertTexttoInt(ui->comboBox->currentText()));
+   BooleanBitmap* checker1 = pickShape(convertTexttoInt(ui->comboBox->currentText()), 0);
 
-   BooleanBitmap* checker2 = pickShape(convertTexttoInt(ui->comboBox_2->currentText()));
+   BooleanBitmap* checker2 = pickShape(convertTexttoInt(ui->comboBox_2->currentText()), 1);
 
-   BooleanBitmap* checker3 = pickShape(convertTexttoInt(ui->comboBox_3->currentText()));
+   BooleanBitmap* checker3 = pickShape(convertTexttoInt(ui->comboBox_3->currentText()), 2);
 
-   BooleanBitmap* checker4 = pickShape(convertTexttoInt(ui->comboBox_4->currentText()));
+   BooleanBitmap* checker4 = pickShape(convertTexttoInt(ui->comboBox_4->currentText()), 3);
 
-   BooleanBitmap* checker5 = pickShape(convertTexttoInt(ui->comboBox_5->currentText()));
+   BooleanBitmap* checker5 = pickShape(convertTexttoInt(ui->comboBox_5->currentText()), 4);
 
-   BooleanBitmap* checker6 = pickShape(convertTexttoInt(ui->comboBox_6->currentText()));
+   BooleanBitmap* checker6 = pickShape(convertTexttoInt(ui->comboBox_6->currentText()), 5);
 
-   BooleanBitmap* checker7 = pickShape(convertTexttoInt(ui->comboBox_7->currentText()));
+   BooleanBitmap* checker7 = pickShape(convertTexttoInt(ui->comboBox_7->currentText()), 6);
 
-   BooleanBitmap* checker8 = pickShape(convertTexttoInt(ui->comboBox_8->currentText()));
+   BooleanBitmap* checker8 = pickShape(convertTexttoInt(ui->comboBox_8->currentText()), 7);
 
    int *result = new int[width * height];
 
@@ -187,7 +180,8 @@ void MainWindow::createImage()
 }
 
 // This display an image onto the QLabel
-void MainWindow::displayImage(QImage img) {
+void MainWindow::displayImage(QImage img)
+{
    ui->lbl_display->setPixmap(QPixmap::fromImage(img).scaled(ui->lbl_display->width(),
                                                              ui->lbl_display->height(),
                                                              Qt::KeepAspectRatio,
@@ -286,6 +280,25 @@ void MainWindow::textChanged_notify(QLineEdit* q1, QLineEdit *q2, const QString 
    delete check;
 }
 
+void MainWindow::fillRC()
+{
+    rows[0] = ui->le_r1->text().toInt();
+    rows[1] = ui->le_r2->text().toInt();
+    rows[2] = ui->le_r3->text().toInt();
+    rows[3] = ui->le_r4->text().toInt();
+    rows[4] = ui->le_r5->text().toInt();
+    rows[5] = ui->le_r6->text().toInt();
+    rows[6] = ui->le_r7->text().toInt();
+    rows[7] = ui->le_r8->text().toInt();
+    cols[0] = ui->le_c1->text().toInt();
+    cols[1] = ui->le_c2->text().toInt();
+    cols[2] = ui->le_c3->text().toInt();
+    cols[3] = ui->le_c4->text().toInt();
+    cols[4] = ui->le_c5->text().toInt();
+    cols[5] = ui->le_c6->text().toInt();
+    cols[6] = ui->le_c7->text().toInt();
+    cols[7] = ui->le_c8->text().toInt();
+}
 
 // Checks if the num is a factor of it
 // Mainly used to check if the user inputs a width/height
@@ -329,3 +342,14 @@ void MainWindow::on_btn_create_img_clicked()
     createImage();
     displayImage(myImage);
 }
+
+// Logic for creating an image
+void MainWindow::on_btn_save_img_clicked()
+{
+
+   // TODO: error check to see if line_box is an actually integer
+   //
+
+   saveImage();
+}
+

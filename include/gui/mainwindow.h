@@ -50,16 +50,18 @@ private:
 
     void comboBoxSelections();
     int convertTexttoInt(QString);
-    BooleanBitmap* pickShape(int);
+    BooleanBitmap* pickShape(int a, int b);
 
     bool checkNum(int a, int b);
     void textChanged_notify(QLineEdit* q1, QLineEdit* q2, const QString &arg1);
+    void fillRC();
 
     void createImage();
     void saveImage();
     void colorImage(int array[], int height, int width);
     void displayImage(QImage img);
 
+    int rows[8], cols[8];
     QImage myImage;
 };
 
