@@ -28,6 +28,15 @@ MainWindow::MainWindow(QWidget *parent) :
         comboBox->addItem("Square with Hole");
         comboBox->addItem("Quadrilateral");
     }
+    int index = 1;
+    foreach (QSpinBox *sb, findChildren<QSpinBox*>())
+    {
+        sb->setSingleStep(1);
+        sb->setRange(1, 8);
+        sb->setValue(index);
+            index++;
+    }
+    index = 0;
     //ui->le_img_h->setObjectName("height");
     //ui->le_img_wd->setObjectName("width");
 
@@ -180,15 +189,6 @@ void MainWindow::colorImage(int *array, int height, int width) {
            for (int j = 0; j < width; j++)
                image.setPixelColor(i, j, _COLOR_TABLE[array[(i * height) + j]]);
 
-/*
-   QString fileName = QFileDialog::getSaveFileName(this, tr("Save Image File"),
-                                                       QString(),
-                                                       tr("Images (*.bmp)"));
-   image.save(fileName);
-    */
-
-   //displayImage(image);
-
    myImage = image;
 }
 
@@ -267,20 +267,94 @@ bool MainWindow::checkNum(int a, int b) {
    }
 }
 
+void MainWindow::on_btn_create_img_clicked()
+{
+    qDebug() << getLayerMode();
+    switch (getLayerMode())
+        {
+        case 1://single
+            createSingleLayerImage();
+            break;
+        case 2://xor
+            TwoLayeredImages(false);
+            break;
+        case 3://or
+            TwoLayeredImages(true);
+            break;
+        default:
+            createSingleLayerImage();
+        }
+    displayImage(myImage);
+}
+
+int MainWindow::getLayerMode()
+{
+
+    if (ui->rb_lyr_1->isChecked())
+
+        return 1;
+
+    else if (ui->rb_ly_xor->isChecked())
+
+        return 2;
+
+    else if (ui->rb_ly_or->isChecked())
+
+        return 3;
+    return 1;
+}
+
+void MainWindow::createSingleLayerImage()
+{
+    createImage();
+}
+
+void MainWindow::TwoLayeredImages(bool truth)
+{
+    int index = 0;
+    int selected;
+    // Create OR'd or XOR'ed CheckerBoards
+    foreach (QSpinBox *sb, findChildren<QSpinBox*>())
+    {
+        //qDebug() << "index: " << index << " value: " << sb->value() << " NewVal: " << ((sb->value()) - 1);
+        selected = ((sb->value()) - 1);
+        //BooleanBitmap* left = boards[index];//current board
+        //BooleanBitmap* right = boards[(sb->value()) - 1];//selected board
+        boards[index] = new BooleanBitmap(boards[index], boards[selected], truth);
+        index++;
+    }
+    createImage();
+}
+
+// Logic for creating an image
+void MainWindow::on_btn_save_img_clicked()
+{
+   saveImage();
+}
+
 //make string array
 void MainWindow::on_btn_random_clicked()
 {
     QString s;
     foreach(QLineEdit* le, findChildren<QLineEdit*>())
     {
-        if(!((le->objectName() == "Width") || (le->objectName() == "Height")))
+        if(!(ifSpinBox(le->objectName())))
         {
-          s = QString::number(int(qPow(2, rand() % 5 + 1)));
+          s = QString::number(int(qPow(2, rand() % 4 + 1)));
           le->setText(s);
 
-          //qDebug() << le->accessibleName() ;
+          //qDebug() << le->objectName() ;
         }
     }
+}
+
+bool MainWindow::ifSpinBox(QString test)
+{
+    if((test == "Width") || (test == "Height") || (test == "qt_spinbox_lineedit"))
+    {
+        return true;
+    }
+    return false;
 }
 
 void MainWindow::on_btn_reset_clicked()
@@ -290,20 +364,3 @@ void MainWindow::on_btn_reset_clicked()
         le->clear();
     }
 }
-
-void MainWindow::on_btn_create_img_clicked()
-{
-    createImage();
-    displayImage(myImage);
-}
-
-// Logic for creating an image
-void MainWindow::on_btn_save_img_clicked()
-{
-
-   // TODO: error check to see if line_box is an actually integer
-   //
-
-   saveImage();
-}
-
