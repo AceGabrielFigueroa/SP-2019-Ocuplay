@@ -157,7 +157,7 @@ void MainWindow::saveImage()
 
 void MainWindow::colorImage(int *array, int height, int width) {
 
-   std::ifstream _COLOR_TABLE_FILE("C:/Users/erics/Desktop/Projects/QTbuild/SP-2019-Ocuplay/res/color.txt");
+   std::ifstream _COLOR_TABLE_FILE("C:/Users/acegf/Documents/QT/Visual/res/color.txt");
 
    QColor _COLOR_TABLE[256];
    QImage image = QImage(width, height, QImage::Format_RGB888);
