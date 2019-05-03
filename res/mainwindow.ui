@@ -33,22 +33,7 @@
          </spacer>
         </item>
         <item row="0" column="4">
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <item>
-           <widget class="QCheckBox" name="cb_rand">
-            <property name="text">
-             <string>Random</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="cb_rseed">
-            <property name="text">
-             <string>Refresh Seed</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <layout class="QHBoxLayout" name="horizontalLayout_4"/>
         </item>
         <item row="1" column="4">
          <layout class="QVBoxLayout" name="verticalLayout_3">

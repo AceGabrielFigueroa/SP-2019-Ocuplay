@@ -45,8 +45,6 @@ private slots:
 
     void on_btn_create_img_clicked();
 
-    void on_rb_lyr_1_toggled(bool checked);
-
 private:
     Ui::MainWindow *ui;
 
