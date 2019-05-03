@@ -46,7 +46,7 @@ void BooleanBitmap::SetAt(int row, int col, bool value)
 BooleanBitmap::BooleanBitmap(BooleanBitmap* chb1, BooleanBitmap* chb2, bool _xor )
 {
 	// Combine the two checker boards with OR od XOR
-	assert(chb1->m_widthPixels == chb2->m_widthPixels && chb1->m_heightPixels == chb2->m_heightPixels);
+    assert(chb1->m_widthPixels == chb2->m_widthPixels && chb1->m_heightPixels == chb2->m_heightPixels);
 
 	Construct(chb1->m_widthPixels, chb1->m_heightPixels);
 	for (auto row = 0; row < m_heightPixels; row++) {

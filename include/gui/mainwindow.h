@@ -59,6 +59,10 @@ private:
     void saveImage();
     void colorImage(int array[], int height, int width);
     void displayImage(QImage img);
+    void createSingleLayerImage();
+    void TwoLayeredImages(bool a);
+    int getLayerMode();
+    bool ifSpinBox(QString test);
 
     int rows[8], cols[8];
     BooleanBitmap* boards[8];
